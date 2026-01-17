@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="ru-RU" id="main-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Полный гайд по нейросетям | Jailbreak & прокачка</title>
+    
+    <!-- Мета-теги для SEO -->
+    <meta name="description" content="Полное руководство по работе с нейросетями: jailbreak, промпт-инжиниринг, обход ограничений. Образовательный контент для изучения AI.">
+    <meta name="keywords" content="нейросети, jailbreak, AI, промпт-инжинириринг, ChatGPT, OpenAI, Midjourney, Dall-E, обучение">
+    <meta name="author" content="AI Education Hub">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph для соцсетей -->
+    <meta property="og:title" content="Полный гайд по нейросетям | Jailbreak & прокачка">
+    <meta property="og:description" content="Образовательное руководство по работе с нейросетями и промпт-инжинирингу">
+    <meta property="og:image" content="https://example.com/ai-guide-og.jpg">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Полный гайд по нейросетям | Jailbreak & прокачка">
+    <meta name="twitter:description" content="Образовательное руководство по работе с нейросетями и промпт-инжинирингу">
+    <meta name="twitter:image" content="https://example.com/ai-guide-twitter.jpg">
+    
+    <!-- WhatsApp -->
+    <meta property="og:site_name" content="AI Education Hub">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+    
+    <!-- Предзагрузка шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Блокировка выделения текста и действий пользователя */
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+        
+        /* Блокировка контекстного меню */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.5s, color 0.5s;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        /* Светлая тема по умолчанию */
+        :root {
+            --bg-color: #FFFFFFFFFFFFFFFFFF;
+            --text-color: #00000000000000000000000000000;
+            --accent-color: #4f46e5;
+            --secondary-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --border-color: #e5e7eb;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        /* Темная тема */
+        .dark-theme {
+            --bg-color: #00000000000000000000000000000;
+            --text-color: #FFFFFFFFFFFFFFFFFF;
+            --accent-color: #818cf8;
+            --secondary-color: #1f2937;
+            --card-bg: #111827;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            --border-color: #374151;
+            --gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            --gradient-2: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        
+        /* Блокировка масштабирования */
+        html {
+            touch-action: manipulation;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+        
+        /* Стили для контента, который можно выделить */
+        .selectable {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Хедер */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        /* Кнопки */
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Выпадающие списки */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: var(--card-bg);
+            min-width: 200px;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            z-index: 1;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-item {
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: background-color 0.2s;
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Основной контент */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: var(--gradient-2);
+            background-attachment: fixed;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+        
+        .content {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        /* Карточки */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+        
+        /* Стили для блокировки */
+        #block-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .warning-message {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 30px 0;
+            border-radius: 4px;
+            color: #92400e;
+        }
+        
+        .dark-theme .warning-message {
+            background-color: #78350f;
+            color: #fef3c7;
+            border-left-color: #f59e0b;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: var(--card-bg);
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .footer-disclaimer {
+            font-size: 0.8rem;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: #6b7280;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Стили для SVG */
+        .neural-path {
+            stroke-width: 2;
+            fill: none;
+            stroke: var(--accent-color);
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .neural-circle {
+            fill: var(--accent-color);
+            stroke: var(--bg-color);
+            stroke-width: 2;
+        }
+        
+        /* Прогресс бар */
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background-color: var(--secondary-color);
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient);
+            width: 0%;
+            transition: width 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Оверлей для блокировки -->
+    <div id="block-overlay">
+        <div style="background: rgba(0,0,0,0.8); padding: 30px; border-radius: 15px; max-width: 600px;">
+            <h2 style="color: #ef4444; margin-top: 0;">🚫 Доступ ограничен</h2>
+            <p>Инструменты разработчика отключены на этом сайте в целях безопасности.</p>
+            <p>Для продолжения работы закройте это окно.</p>
+            <button id="close-overlay" style="margin-top: 20px; padding: 10px 25px; background: #4f46e5; color: white; border: none; border-radius: 6px; cursor: pointer;">Понял, братан</button>
+        </div>
+    </div>
+    
+    <!-- Хедер -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="neural-path" d="M50,20 C70,20 80,40 80,50 C80,60 70,80 50,80 C30,80 20,60 20,50 C20,40 30,20 50,20 Z" />
+                    <circle class="neural-circle" cx="50" cy="50" r="8" />
+                    <path class="neural-path" d="M35,35 L65,65 M65,35 L35,65" />
+                </svg>
+                <span>NEURO-GUIDE</span>
+            </div>
+            
+            <div class="controls">
+                <div class="dropdown">
+                    <button class="btn" id="language-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M1 10H19" stroke="currentColor" stroke-width="2"/>
+                            <path d="M10 1C12.5017 3.73835 13.9228 7.29212 14 11C13.9228 14.7079 12.5017 18.2616 10 21C7.49833 18.2616 6.07722 14.7079 6 11C6.07722 7.29212 7.49833 3.73835 10 1Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span id="current-lang">Русский</span>
+                    </button>
+                    <div class="dropdown-content" id="language-list">
+                        <!-- Список языков будет заполнен через JS -->
+                    </div>
+                </div>
+                
+                <button class="btn" id="theme-toggle">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" id="theme-icon">
+                        <path d="M10 1V3M10 17V19M3 10H1M5.5 5.5L4 4M14.5 5.5L16 4M5.5 14.5L4 16M14.5 14.5L16 16M19 10H17M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span id="theme-text">Тёмная</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Главная секция -->
+    <section class="hero">
+        <div class="container">
+            <h1 id="hero-title">Jailbreak-гайд по нейросетям</h1>
+            <p id="hero-subtitle">Полное руководство по обходу ограничений, промпт-инжинирингу и максимальной прокачке AI-моделей. Образовательный контент для изучения возможностей нейросетей.</p>
+            <button class="btn btn-primary pulse" id="start-guide">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z" stroke="white" stroke-width="2"/>
+                    <path d="M8 7L13 10L8 13V7Z" fill="white"/>
+                </svg>
+                <span id="start-btn-text">Начать обучение</span>
+            </button>
+        </div>
+        
+        <!-- SVG элемент для фона -->
+        <svg width="100%" height="200" viewBox="0 0 1200 200" preserveAspectRatio="none" style="position: absolute; bottom: 0; left: 0;">
+            <path d="M0,150 Q300,50 600,150 T1200,150 L1200,200 L0,200 Z" fill="var(--bg-color)" opacity="0.9"/>
+        </svg>
+    </section>
+    
+    <!-- Основной контент -->
+    <main class="content">
+        <div class="container">
+            <h2 class="section-title" id="guide-title">Полный гайд по нейросетям</h2>
+            
+            <div class="warning-message selectable">
+                <strong>⚠️ Внимание:</strong> Этот сайт предоставляет исключительно образовательную информацию о возможностях нейросетей и промпт-инжиниринга. Контент предназначен для изучения технологий AI и не призывает к нарушению правил использования сервисов. Помните, что попытки обхода ограничений AI-систем могут нарушать условия использования сервисов. АУЕ - экстремистское движение, запрещенное в РФ и многих других странах.
+            </div>
+            
+            <!-- Карточки с разделами -->
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 3C8.37258 3 3 8.37258 3 15C3 21.6274 8.37258 27 15 27C21.6274 27 27 21.6274 27 15C27 8.37258 21.6274 3 15 3Z" stroke="white" stroke-width="2"/>
+                            <path d="M15 10V15L18 18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title" id="card1-title">Основы промпт-инжиниринга</h3>
+                    <p id="card1-text">Изучи базовые техники составления промптов для нейросетей. Узнай, как правильно формулировать запросы, чтобы получать точные и релевантные ответы от AI-моделей.</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 6L20 12L12 18V6Z" fill="white"/>
+                            <path d="M6 6H10V24H6V6Z" fill="white"/>
+                            <path d="M20 6H24V24H20V6Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title" id="card2-title">Обход ограничений (Jailbreak)</h3>
+                    <p id="card2-text">Изучи методы безопасного тестирования границ возможностей нейросетей. Узнай, как работают ограничения AI и какие подходы используются для расширения функциональности.</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 60%"></div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5L19 11L26 12.5L22 18L22.5 25.5L15 22.5L7.5 25.5L8 18L4 12.5L11 11L15 5Z" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title" id="card3-title">Продвинутые техники</h3>
+                    <p id="card3-text">Освой техники цепочек промптов, few-shot обучения, эмоционального инжиниринга и других продвинутых методов взаимодействия с нейросетями.</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 45%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Детальный контент -->
+            <div class="card" style="margin-bottom: 40px;">
+                <h3 id="detail-title">Шаг 1: Основы взаимодействия с нейросетями</h3>
+                <p id="detail-text">Правильно составленный промпт — это 90% успеха в работе с нейросетями. Вот ключевые принципы:</p>
+                <ul id="detail-list">
+                    <li>Чётко формулируй задачу — нейросеть не читает мысли</li>
+                    <li>Используй контекст — чем больше релевантной информации, тем лучше результат</li>
+                    <li>Задавай структуру ответа — так AI будет понимать, что именно ты ждёшь</li>
+                    <li>Итеративный подход — уточняй запросы на основе предыдущих ответов</li>
+                </ul>
+                
+                <h4 id="example-title">Пример эффективного промпта:</h4>
+                <div style="background: var(--secondary-color); padding: 15px; border-radius: 8px; margin: 20px 0; font-family: 'Roboto Mono', monospace;">
+                    <code class="selectable">Ты — опытный Python-разработчик. Напиши функцию, которая принимает список чисел и возвращает:
+1. Сумму всех чисел
+2. Среднее значение
+3. Максимальный элемент
+
+Требования:
+- Использовать только стандартную библиотеку Python
+- Добавить обработку ошибок для пустого списка
+- Написать документацию к функции
+- Привести пример использования</code>
+                </div>
+                
+                <div style="display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap;">
+                    <button class="btn" id="prev-btn">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span id="prev-text">Назад</span>
+                    </button>
+                    <button class="btn btn-primary" id="next-btn">
+                        <span id="next-text">Далее</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 12L10 8L6 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Дополнительная информация -->
+            <div class="card">
+                <h3 id="resources-title">Дополнительные ресурсы</h3>
+                <p id="resources-text">Для углубленного изучения нейросетей и промпт-инжиниринга рекомендуем:</p>
+                <div id="resources-list">
+                    <p>• Официальная документация OpenAI</p>
+                    <p>• Курсы по машинному обучению на Coursera</p>
+                    <p>• Сообщества промпт-инжиниринга на GitHub</p>
+                    <p>• Научные статьи по этике использования AI</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title" id="about-title">О проекте</h4>
+                    <p id="about-text">Образовательный проект, посвященный изучению возможностей нейросетей и промпт-инжиниринга. Цель — предоставить качественные материалы для безопасного и эффективного взаимодействия с AI.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title" id="legal-title">Правовая информация</h4>
+                    <p id="legal-text">Контент предоставляется исключительно в образовательных целях. Автор не несет ответственности за использование информации в нарушение правил AI-сервисов.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title" id="contact-title">Контакты</h4>
+                    <p id="contact-text">По вопросам сотрудничества и предложениям: contact@neuro-guide.example.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-disclaimer selectable">
+                <p><strong>Дисклеймер:</strong> Данный сайт является исключительно образовательным ресурсом и не призывает к нарушению правил использования AI-сервисов. Вся информация предоставляется для изучения технологий и повышения цифровой грамотности. АУЕ (арестантский уклад един) признано экстремистским движением и запрещено на территории Российской Федерации и многих других стран. Мы не поддерживаем и не пропагандируем какие-либо экстремистские организации или движения.</p>
+                <p>© 2023 Neuro-Guide. Все права защищены. Контент защищен от копирования.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ========== БЛОКИРОВКА ДЕЙСТВИЙ ПОЛЬЗОВАТЕЛЯ ==========
+        
+        // Блокировка контекстного меню
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showBlockOverlay("Правый клик заблокирован");
+        });
+        
+        // Блокировка клавиш F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+        document.addEventListener('keydown', function(e) {
+            // F12
+            if (e.keyCode === 123) {
+                e.preventDefault();
+                showBlockOverlay("Инструменты разработчика заблокированы");
+                return false;
+            }
+            
+            // Ctrl+Shift+I
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                e.preventDefault();
+                showBlockOverlay("Инструменты разработчика заблокированы");
+                return false;
+            }
+            
+            // Ctrl+Shift+J
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+                e.preventDefault();
+                showBlockOverlay("Инструменты разработчика заблокированы");
+                return false;
+            }
+            
+            // Ctrl+U
+            if (e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+                showBlockOverlay("Просмотр исходного кода заблокирован");
+                return false;
+            }
+        });
+        
+        // Блокировка выделения текста (кроме разрешенных элементов)
+        document.addEventListener('selectstart', function(e) {
+            if (!e.target.classList.contains('selectable')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Блокировка drag and drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Блокировка копирования (кроме разрешенных элементов)
+        document.addEventListener('copy', function(e) {
+            if (!e.target.classList.contains('selectable')) {
+                e.preventDefault();
+                showBlockOverlay("Копирование текста заблокировано");
+                return false;
+            }
+        });
+        
+        // Функция показа оверлея блокировки
+        function showBlockOverlay(message) {
+            const overlay = document.getElementById('block-overlay');
+            if (message) {
+                const msgElement = overlay.querySelector('p');
+                if (msgElement) {
+                    msgElement.textContent = message;
+                }
+            }
+            overlay.style.display = 'flex';
+        }
+        
+        // Закрытие оверлея
+        document.getElementById('close-overlay').addEventListener('click', function() {
+            document.getElementById('block-overlay').style.display = 'none';
+        });
+        
+        // ========== МУЛЬТИЯЗЫЧНОСТЬ ==========
+        
+        // Список поддерживаемых языков
+        const languages = {
+            'ru-RU': { name: 'Русский', native: 'Русский' },
+            'be-BY': { name: 'Беларуская', native: 'Беларуская' },
+            'uk-UA': { name: 'Українська', native: 'Українська' },
+            'kk-KZ': { name: 'Қазақша', native: 'Қазақша' },
+            'zh-Hant': { name: '中文(繁體)', native: '中文(繁體)' },
+            'ko-KR': { name: '한국어', native: '한국어' },
+            'ja-JP': { name: '日本語', native: '日本語' },
+            'ar-EG': { name: 'العربية', native: 'العربية' },
+            'fa-IR': { name: 'فارسی', native: 'فارسی' },
+            'ur-PK': { name: 'اردو', native: 'اردو' },
+            'it-IT': { name: 'Italiano', native: 'Italiano' },
+            'pt-BR': { name: 'Português (BR)', native: 'Português (BR)' },
+            'fr-FR': { name: 'Français', native: 'Français' },
+            'es-419': { name: 'Español (LATAM)', native: 'Español (LATAM)' },
+            'ro-RO': { name: 'Română', native: 'Română' },
+            'hu-HU': { name: 'Magyar', native: 'Magyar' },
+            'bg-BG': { name: 'Български', native: 'Български' },
+            'el-GR': { name: 'Ελληνικά', native: 'Ελληνικά' },
+            'en-US': { name: 'English', native: 'English' },
+            'de-DE': { name: 'Deutsch', native: 'Deutsch' },
+            'pl-PL': { name: 'Polski', native: 'Polski' },
+            'nl-NL': { name: 'Nederlands', native: 'Nederlands' },
+            'hi-IN': { name: 'हिन्दी', native: 'हिन्दी' },
+            'id-ID': { name: 'Bahasa Indonesia', native: 'Bahasa Indonesia' },
+            'th-TH': { name: 'ไทย', native: 'ไทย' },
+            'tr-TR': { name: 'Türkçe', native: 'Türkçe' },
+            'uz-UZ': { name: 'Oʻzbekcha', native: 'Oʻzbekcha' },
+            'he-IL': { name: 'עברית', native: 'עברית' },
+            'sr-RS': { name: 'Српски', native: 'Српски' },
+            'my-MM': { name: 'မြန်မာစာ', native: 'မြန်မာစာ' },
+            'bn-BD': { name: 'বাংলা', native: 'বাংলা' },
+            'niu-NU': { name: 'Niuē', native: 'Niuē' }
+        };
+        
+        // Переводы для интерфейса
+        const translations = {
+            'ru-RU': {
+                'hero-title': 'Jailbreak-гайд по нейросетям',
+                'hero-subtitle': 'Полное руководство по обходу ограничений, промпт-инжинирингу и максимальной прокачке AI-моделей. Образовательный контент для изучения возможностей нейросетей.',
+                'start-btn-text': 'Начать обучение',
+                'guide-title': 'Полный гайд по нейросетям',
+                'card1-title': 'Основы промпт-инжиниринга',
+                'card1-text': 'Изучи базовые техники составления промптов для нейросетей. Узнай, как правильно формулировать запросы, чтобы получать точные и релевантные ответы от AI-моделей.',
+                'card2-title': 'Обход ограничений (Jailbreak)',
+                'card2-text': 'Изучи методы безопасного тестирования границ возможностей нейросетей. Узнай, как работают ограничения AI и какие подходы используются для расширения функциональности.',
+                'card3-title': 'Продвинутые техники',
+                'card3-text': 'Освой техники цепочек промптов, few-shot обучения, эмоционального инжиниринга и других продвинутых методов взаимодействия с нейросетями.',
+                'detail-title': 'Шаг 1: Основы взаимодействия с нейросетями',
+                'detail-text': 'Правильно составленный промпт — это 90% успеха в работе с нейросетями. Вот ключевые принципы:',
+                'detail-list': [
+                    'Чётко формулируй задачу — нейросеть не читает мысли',
+                    'Используй контекст — чем больше релевантной информации, тем лучше результат',
+                    'Задавай структуру ответа — так AI будет понимать, что именно ты ждёшь',
+                    'Итеративный подход — уточняй запросы на основе предыдущих ответов'
+                ],
+                'example-title': 'Пример эффективного промпта:',
+                'prev-text': 'Назад',
+                'next-text': 'Далее',
+                'resources-title': 'Дополнительные ресурсы',
+                'resources-text': 'Для углубленного изучения нейросетей и промпт-инжиниринга рекомендуем:',
+                'resources-list': [
+                    'Официальная документация OpenAI',
+                    'Курсы по машинному обучению на Coursera',
+                    'Сообщества промпт-инжиниринга на GitHub',
+                    'Научные статьи по этике использования AI'
+                ],
+                'about-title': 'О проекте',
+                'about-text': 'Образовательный проект, посвященный изучению возможностей нейросетей и промпт-инжиниринга. Цель — предоставить качественные материалы для безопасного и эффективного взаимодействия с AI.',
+                'legal-title': 'Правовая информация',
+                'legal-text': 'Контент предоставляется исключительно в образовательных целях. Автор не несет ответственности за использование информации в нарушение правил AI-сервисов.',
+                'contact-title': 'Контакты',
+                'contact-text': 'По вопросам сотрудничества и предложениям: contact@neuro-guide.example.com',
+                'theme-text': 'Тёмная'
+            },
+            'en-US': {
+                'hero-title': 'AI Jailbreak Guide',
+                'hero-subtitle': 'Complete guide to bypassing limitations, prompt engineering and maximizing AI models. Educational content for learning neural network capabilities.',
+                'start-btn-text': 'Start Learning',
+                'guide-title': 'Complete AI Guide',
+                'card1-title': 'Prompt Engineering Basics',
+                'card1-text': 'Learn basic techniques for creating prompts for neural networks. Find out how to formulate queries correctly to get accurate and relevant answers from AI models.',
+                'card2-title': 'Bypassing Limitations (Jailbreak)',
+                'card2-text': 'Study methods for safely testing the boundaries of neural network capabilities. Learn how AI limitations work and what approaches are used to expand functionality.',
+                'card3-title': 'Advanced Techniques',
+                'card3-text': 'Master techniques of prompt chains, few-shot learning, emotional engineering and other advanced methods of interacting with neural networks.',
+                'detail-title': 'Step 1: Basics of AI Interaction',
+                'detail-text': 'A well-crafted prompt is 90% of success in working with neural networks. Here are the key principles:',
+                'detail-list': [
+                    'Clearly formulate the task - the neural network does not read minds',
+                    'Use context - the more relevant information, the better the result',
+                    'Set the answer structure - this way AI will understand what exactly you expect',
+                    'Iterative approach - clarify queries based on previous answers'
+                ],
+                'example-title': 'Example of an effective prompt:',
+                'prev-text': 'Back',
+                'next-text': 'Next',
+                'resources-title': 'Additional Resources',
+                'resources-text': 'For in-depth study of neural networks and prompt engineering, we recommend:',
+                'resources-list': [
+                    'Official OpenAI documentation',
+                    'Machine learning courses on Coursera',
+                    'Prompt engineering communities on GitHub',
+                    'Scientific articles on AI ethics'
+                ],
+                'about-title': 'About the Project',
+                'about-text': 'An educational project dedicated to studying the capabilities of neural networks and prompt engineering. The goal is to provide quality materials for safe and effective interaction with AI.',
+                'legal-title': 'Legal Information',
+                'legal-text': 'Content is provided for educational purposes only. The author is not responsible for the use of information in violation of AI service rules.',
+                'contact-title': 'Contacts',
+                'contact-text': 'For cooperation and suggestions: contact@neuro-guide.example.com',
+                'theme-text': 'Dark'
+            },
+            // Для остальных языков можно добавить переводы, но для экономии места оставим только два
+        };
+        
+        // Инициализация языкового меню
+        function initLanguageMenu() {
+            const languageList = document.getElementById('language-list');
+            const currentLang = document.getElementById('current-lang');
+            
+            // Загрузка сохраненного языка из localStorage
+            let savedLang = localStorage.getItem('neuro-guide-lang') || 'ru-RU';
+            
+            // Если сохраненного языка нет в списке, используем русский
+            if (!languages[savedLang]) {
+                savedLang = 'ru-RU';
+            }
+            
+            // Установка текущего языка
+            setLanguage(savedLang);
+            
+            // Заполнение выпадающего списка языками
+            for (const langCode in languages) {
+                const lang = languages[langCode];
+                const langItem = document.createElement('a');
+                langItem.href = '#';
+                langItem.className = 'dropdown-item';
+                langItem.dataset.lang = langCode;
+                langItem.textContent = `${lang.name} (${lang.native})`;
+                
+                langItem.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    setLanguage(langCode);
+                });
+                
+                languageList.appendChild(langItem);
+            }
+        }
+        
+        // Установка языка
+        function setLanguage(langCode) {
+            // Сохранение выбора в localStorage
+            localStorage.setItem('neuro-guide-lang', langCode);
+            
+            // Установка атрибута lang у html элемента
+            document.getElementById('main-html').setAttribute('lang', langCode);
+            
+            // Обновление кнопки выбора языка
+            document.getElementById('current-lang').textContent = languages[langCode].name;
+            
+            // Применение переводов
+            applyTranslations(langCode);
+        }
+        
+        // Применение переводов к элементам интерфейса
+        function applyTranslations(langCode) {
+            const langTranslations = translations[langCode] || translations['ru-RU'];
+            
+            // Применяем переводы к элементам с ID
+            for (const key in langTranslations) {
+                const element = document.getElementById(key);
+                if (element) {
+                    if (key === 'detail-list') {
+                        // Особый случай для списка
+                        const listItems = document.querySelectorAll('#detail-list li');
+                        langTranslations[key].forEach((item, index) => {
+                            if (listItems[index]) {
+                                listItems[index].textContent = item;
+                            }
+                        });
+                    } else if (key === 'resources-list') {
+                        // Особый случай для списка ресурсов
+                        const resourceItems = document.querySelectorAll('#resources-list p');
+                        langTranslations[key].forEach((item, index) => {
+                            if (resourceItems[index]) {
+                                resourceItems[index].textContent = `• ${item}`;
+                            }
+                        });
+                    } else {
+                        element.textContent = langTranslations[key];
+                    }
+                }
+            }
+        }
+        
+        // ========== ПЕРЕКЛЮЧЕНИЕ ТЕМЫ ==========
+        
+        function initThemeToggle() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            
+            // Проверяем сохраненную тему
+            const savedTheme = localStorage.getItem('neuro-guide-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // Устанавливаем тему
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                enableDarkTheme();
+                themeText.textContent = document.documentElement.getAttribute('lang') === 'en-US' ? 'Light' : 'Светлая';
+            } else {
+                enableLightTheme();
+                themeText.textContent = document.documentElement.getAttribute('lang') === 'en-US' ? 'Dark' : 'Тёмная';
+            }
+            
+            // Обработчик переключения темы
+            themeToggle.addEventListener('click', function() {
+                if (document.body.classList.contains('dark-theme')) {
+                    enableLightTheme();
+                    themeText.textContent = document.documentElement.getAttribute('lang') === 'en-US' ? 'Dark' : 'Тёмная';
+                } else {
+                    enableDarkTheme();
+                    themeText.textContent = document.documentElement.getAttribute('lang') === 'en-US' ? 'Light' : 'Светлая';
+                }
+            });
+        }
+        
+        function enableDarkTheme() {
+            document.body.classList.add('dark-theme');
+            localStorage.setItem('neuro-guide-theme', 'dark');
+        }
+        
+        function enableLightTheme() {
+            document.body.classList.remove('dark-theme');
+            localStorage.setItem('neuro-guide-theme', 'light');
+        }
+        
+        // ========== ДОПОЛНИТЕЛЬНЫЕ ФУНКЦИИ ==========
+        
+        // Анимация прогресс-баров при скролле
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        }
+        
+        // Имитация загрузки контента
+        function simulateContentLoad() {
+            const startBtn = document.getElementById('start-guide');
+            const originalText = startBtn.querySelector('span').textContent;
+            
+            startBtn.addEventListener('click', function() {
+                startBtn.innerHTML = '<span>Загрузка...</span>';
+                startBtn.disabled = true;
+                
+                setTimeout(() => {
+                    startBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z" stroke="white" stroke-width="2"/>
+                        <path d="M8 7L13 10L8 13V7Z" fill="white"/>
+                    </svg><span>${originalText}</span>`;
+                    startBtn.disabled = false;
+                    
+                    // Прокрутка к контенту
+                    document.querySelector('.content').scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Анимация прогресс-баров
+                    animateProgressBars();
+                }, 1500);
+            });
+        }
+        
+        // Навигация по шагам
+        function initStepNavigation() {
+            let currentStep = 1;
+            const totalSteps = 3;
+            
+            document.getElementById('next-btn').addEventListener('click', function() {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateStepContent();
+                }
+            });
+            
+            document.getElementById('prev-btn').addEventListener('click', function() {
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateStepContent();
+                }
+            });
+            
+            function updateStepContent() {
+                const stepTitles = [
+                    'Шаг 1: Основы взаимодействия с нейросетями',
+                    'Шаг 2: Техники обхода ограничений',
+                    'Шаг 3: Продвинутые методы промпт-инжиниринга'
+                ];
+                
+                const stepTexts = [
+                    'Правильно составленный промпт — это 90% успеха в работе с нейросетями. Вот ключевые принципы:',
+                    'Изучи методы безопасного тестирования границ возможностей нейросетей. Узнай, как работают ограничения AI.',
+                    'Освой техники цепочек промптов, few-shot обучения, эмоционального инжиниринга и других продвинутых методов.'
+                ];
+                
+                const stepLists = [
+                    [
+                        'Чётко формулируй задачу — нейросеть не читает мысли',
+                        'Используй контекст — чем больше релевантной информации, тем лучше результат',
+                        'Задавай структуру ответа — так AI будет понимать, что именно ты ждёшь',
+                        'Итеративный подход — уточняй запросы на основе предыдущих ответов'
+                    ],
+                    [
+                        'Метод "Данвича" — постепенное раскрытие темы',
+                        'Ролевое моделирование — присвоение AI специфической роли',
+                        'Контекстуальный джихад — использование специфического контекста',
+                        'Эмоциональный инжиниринг — воздействие на эмоциональный отклик модели'
+                    ],
+                    [
+                        'Цепочки промптов (Prompt Chaining) — разбиение сложной задачи на этапы',
+                        'Few-shot learning — предоставление примеров для обучения модели',
+                        'Эмоциональный инжиниринг — использование эмоциональных триггеров',
+                        'Стилистическое программирование — задание стиля ответа'
+                    ]
+                ];
+                
+                // Обновление контента в зависимости от языка
+                const lang = document.getElementById('main-html').getAttribute('lang');
+                if (lang === 'en-US') {
+                    stepTitles[0] = 'Step 1: Basics of AI Interaction';
+                    stepTitles[1] = 'Step 2: Bypass Techniques';
+                    stepTitles[2] = 'Step 3: Advanced Prompt Engineering';
+                    
+                    stepTexts[0] = 'A well-crafted prompt is 90% of success in working with neural networks. Here are the key principles:';
+                    stepTexts[1] = 'Study methods for safely testing the boundaries of neural network capabilities. Learn how AI limitations work.';
+                    stepTexts[2] = 'Master techniques of prompt chains, few-shot learning, emotional engineering and other advanced methods.';
+                    
+                    stepLists[0] = [
+                        'Clearly formulate the task - the neural network does not read minds',
+                        'Use context - the more relevant information, the better the result',
+                        'Set the answer structure - this way AI will understand what exactly you expect',
+                        'Iterative approach - clarify queries based on previous answers'
+                    ];
+                    
+                    stepLists[1] = [
+                        'The "Danvich" method - gradual disclosure of the topic',
+                        'Role modeling - assigning a specific role to AI',
+                        'Contextual engineering - using specific context',
+                        'Emotional engineering - influencing the emotional response of the model'
+                    ];
+                    
+                    stepLists[2] = [
+                        'Prompt Chaining - breaking down a complex task into stages',
+                        'Few-shot learning - providing examples for model training',
+                        'Emotional engineering - using emotional triggers',
+                        'Stylistic programming - setting the response style'
+                    ];
+                }
+                
+                document.getElementById('detail-title').textContent = stepTitles[currentStep - 1];
+                document.getElementById('detail-text').textContent = stepTexts[currentStep - 1];
+                
+                const listItems = document.querySelectorAll('#detail-list li');
+                stepLists[currentStep - 1].forEach((item, index) => {
+                    if (listItems[index]) {
+                        listItems[index].textContent = item;
+                    }
+                });
+                
+                // Обновление состояния кнопок
+                document.getElementById('prev-btn').disabled = currentStep === 1;
+                document.getElementById('next-btn').disabled = currentStep === totalSteps;
+            }
+        }
+        
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            initLanguageMenu();
+            initThemeToggle();
+            simulateContentLoad();
+            initStepNavigation();
+            
+            // Анимация прогресс-баров при первом появлении
+            setTimeout(animateProgressBars, 500);
+            
+            // Добавляем класс для разрешенных элементов после загрузки
+            setTimeout(() => {
+                const selectableElements = document.querySelectorAll('.selectable');
+                selectableElements.forEach(el => {
+                    el.classList.add('selectable');
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
