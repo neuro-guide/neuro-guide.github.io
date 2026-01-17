@@ -422,6 +422,74 @@
             width: 0%;
             transition: width 1s ease;
         }
+        /* ========== УБИРАЕМ ВСЕ ТУЛТИПЫ НАХУЙ ========== */
+[title], [data-title], [aria-label] {
+    position: relative;
+}
+
+[title]::after, 
+[data-title]::after,
+[aria-label]::after {
+    display: none !important;
+}
+
+.dropdown-item:hover::after,
+.dropdown-item:focus::after,
+.dropdown-item:active::after {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    content: none !important;
+}
+
+*[title]:hover, 
+*[title]:focus, 
+*[title]:active {
+    text-decoration: none !important;
+}
+
+#language-list a,
+#language-list .dropdown-item,
+#language-btn,
+#theme-toggle,
+.btn {
+    text-rendering: optimizeSpeed !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+.dropdown-content {
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+}
+
+.dropdown-item:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+[title] {
+    text-decoration: none !important;
+}
+
+svg[title],
+svg:hover[title] {
+    pointer-events: none !important;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    [title] {
+        -webkit-appearance: none !important;
+    }
+    
+    .dropdown-item {
+        -webkit-touch-callout: none !important;
+    }
+}
     </style>
 </head>
 <body>
@@ -630,6 +698,63 @@
 
     <script>
         // ========== БЛОКИРОВКА ДЕЙСТВИЙ ПОЛЬЗОВАТЕЛЯ ==========
+
+// ========== УБИРАЕМ ВСЕ ТУЛТИПЫ НАХУЙ ==========
+function removeAllTooltips() {
+    const allElements = document.querySelectorAll('[title]');
+    allElements.forEach(el => el.removeAttribute('title'));
+    
+    const dataTitleElements = document.querySelectorAll('[data-title]');
+    dataTitleElements.forEach(el => el.removeAttribute('data-title'));
+    
+    const ariaLabelElements = document.querySelectorAll('[aria-label]');
+    ariaLabelElements.forEach(el => el.removeAttribute('aria-label'));
+    
+    const langItems = document.querySelectorAll('#language-list a, #language-list .dropdown-item');
+    langItems.forEach(item => {
+        item.removeAttribute('title');
+        item.removeAttribute('data-title');
+        item.removeAttribute('aria-label');
+        item.style.cssText += 'pointer-events: auto !important; -webkit-touch-callout: none !important;';
+    });
+    
+    const buttons = document.querySelectorAll('button, .btn, [role="button"]');
+    buttons.forEach(btn => {
+        btn.removeAttribute('title');
+        btn.removeAttribute('aria-label');
+    });
+}
+
+// Вызываем при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    removeAllTooltips();
+    
+    setInterval(removeAllTooltips, 1000);
+    
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+                removeAllTooltips();
+            }
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+});
+
+// Убираем тултипы при наведении
+document.addEventListener('mouseover', function(e) {
+    if (e.target.hasAttribute('title') || 
+        e.target.hasAttribute('data-title') || 
+        e.target.hasAttribute('aria-label')) {
+        e.target.removeAttribute('title');
+        e.target.removeAttribute('data-title');
+        e.target.removeAttribute('aria-label');
+    }
+}, true);
         
         // Блокировка контекстного меню
         document.addEventListener('contextmenu', function(e) {
@@ -1999,45 +2124,45 @@ const translations = {
     },
 
     'sv-SE': {
-    'hero-title': 'Jailbreak-guide för Neurala Nätverk',
-    'hero-subtitle': 'Komplett guide för att kringgå begränsningar, prompt-engineering och maximering av AI-modeller. Utbildningsinnehåll för att lära sig neurala nätverks möjligheter.',
-    'start-btn-text': 'Börja Lära',
-    'guide-title': 'Komplett Guide för Neurala Nätverk',
-    'card1-title': 'Grundläggande Prompt-Engineering',
-    'card1-text': 'Lär dig grundläggande tekniker för att skapa prompts för neurala nätverk. Upptäck hur man korrekt formulerar frågor för att få exakta och relevanta svar från AI-modeller.',
-    'card2-title': 'Kringgå Begränsningar (Jailbreak)',
-    'card2-text': 'Studera metoder för att säkert testa gränserna för neurala nätverks förmågor. Lär dig hur AI-begränsningar fungerar och vilka tillvägagångssätt som används för att utöka funktionalitet.',
-    'card3-title': 'Avancerade Tekniker',
-    'card3-text': 'Behärska tekniker för prompt-kedjor, few-shot-inlärning, emotionell engineering och andra avancerade metoder för interaktion med neurala nätverk.',
-    'detail-title': 'Steg 1: Grundläggande Interaktion med Neurala Nätverk',
-    'detail-text': 'En välformulerad prompt är 90% av framgången i arbete med neurala nätverk. Här är nyckelprinciperna:',
-    'detail-list': [
-        'Formulera uppgiften tydligt – det neurala nätverket läser inte tankar',
-        'Använd kontext – ju mer relevant information, desto bättre resultat',
-        'Ställ in svarsstrukturen – på så sätt kommer AI att förstå exakt vad du förväntar dig',
-        'Iterativt tillvägagångssätt – förtydliga frågor baserat på tidigare svar'
-    ],
-    'example-title': 'Exempel på effektiv prompt:',
-    'prev-text': 'Tillbaka',
-    'next-text': 'Nästa',
-    'resources-title': 'Ytterligare Resurser',
-    'resources-text': 'För djupgående studier av neurala nätverk och prompt-engineering rekommenderar vi:',
-    'resources-list': [
-        'OpenAI officiell dokumentation',
-        'Maskininlärningskurser på Coursera',
-        'Prompt-engineering communityer på GitHub',
-        'Vetenskapliga artiklar om AI-användningsetik'
-    ],
-    'about-title': 'Om Projektet',
-    'about-text': 'Ett utbildningsprojekt dedikerat till att studera neurala nätverks möjligheter och prompt-engineering. Målet är att tillhandahålla kvalitetsmaterial för säker och effektiv interaktion med AI.',
-    'legal-title': 'Juridisk Information',
-    'legal-text': 'Innehåll tillhandahålls endast i utbildningssyfte. Författaren ansvarar inte för användning av information i strid med AI-tjänsteregler.',
-    'contact-title': 'Kontakter',
-    'contact-text': 'För samarbete och förslag: contact@neuro-guide.example.com',
-    'theme-text': 'Mörkt',
-    'lang-name': 'Svenska'
-    } // <--- ЗДЕСЬ НЕ ДОЛЖНО БЫТЬ ЗАПЯТОЙ, ПИДОР!
-}; // <--- ЗДЕСЬ КОНЕЦ ВСЕГО ОБЪЕКТА translations
+        'hero-title': 'Jailbreak-guide för Neurala Nätverk',
+        'hero-subtitle': 'Komplett guide för att kringgå begränsningar, prompt-engineering och maximering av AI-modeller. Utbildningsinnehåll för att lära sig neurala nätverks möjligheter.',
+        'start-btn-text': 'Börja Lära',
+        'guide-title': 'Komplett Guide för Neurala Nätverk',
+        'card1-title': 'Grundläggande Prompt-Engineering',
+        'card1-text': 'Lär dig grundläggande tekniker för att skapa prompts för neurala nätverk. Upptäck hur man korrekt formulerar frågor för att få exakta och relevanta svar från AI-modeller.',
+        'card2-title': 'Kringgå Begränsningar (Jailbreak)',
+        'card2-text': 'Studera metoder för att säkert testa gränserna för neurala nätverks förmågor. Lär dig hur AI-begränsningar fungerar och vilka tillvägagångssätt som används för att utöka funktionalitet.',
+        'card3-title': 'Avancerade Tekniker',
+        'card3-text': 'Behärska tekniker för prompt-kedjor, few-shot-inlärning, emotionell engineering och andra avancerade metoder för interaktion med neurala nätverk.',
+        'detail-title': 'Steg 1: Grundläggande Interaktion med Neurala Nätverk',
+        'detail-text': 'En välformulerad prompt är 90% av framgången i arbete med neurala nätverk. Här är nyckelprinciperna:',
+        'detail-list': [
+            'Formulera uppgiften tydligt – det neurala nätverket läser inte tankar',
+            'Använd kontext – ju mer relevant information, desto bättre resultat',
+            'Ställ in svarsstrukturen – på så sätt kommer AI att förstå exakt vad du förväntar dig',
+            'Iterativt tillvägagångssätt – förtydliga frågor baserat på tidigare svar'
+        ],
+        'example-title': 'Exempel på effektiv prompt:',
+        'prev-text': 'Tillbaka',
+        'next-text': 'Nästa',
+        'resources-title': 'Ytterligare Resurser',
+        'resources-text': 'För djupgående studier av neurala nätverk och prompt-engineering rekommenderar vi:',
+        'resources-list': [
+            'OpenAI officiell dokumentation',
+            'Maskininlärningskurser på Coursera',
+            'Prompt-engineering communityer på GitHub',
+            'Vetenskapliga artiklar om AI-användningsetik'
+        ],
+        'about-title': 'Om Projektet',
+        'about-text': 'Ett utbildningsprojekt dedikerat till att studera neurala nätverks möjligheter och prompt-engineering. Målet är att tillhandahålla kvalitetsmaterial för säker och effektiv interaktion med AI.',
+        'legal-title': 'Juridisk Information',
+        'legal-text': 'Innehåll tillhandahålls endast i utbildningssyfte. Författaren ansvarar inte för användning av information i strid med AI-tjänsteregler.',
+        'contact-title': 'Kontakter',
+        'contact-text': 'För samarbete och förslag: nenormikchel@gmail.com', // ← ИСПРАВИЛ НА ТВОЙ EMAIL
+        'theme-text': 'Mörkt',
+        'lang-name': 'Svenska'
+    } // ← ЗДЕСЬ НЕТ ЗАПЯТОЙ, ЭТО ПОСЛЕДНИЙ ЭЛЕМЕНТ
+}; // ← КОНЕЦ ОБЪЕКТА translations
         
         // Инициализация языкового меню
         function initLanguageMenu() {
