@@ -3233,6 +3233,154 @@ async function handleFormSubmit(e) {
 
 // Обновленный ивент формы
 document.getElementById('static-contact-form').addEventListener('submit', handleFormSubmit);
+            // ========== РЕЖИМ ДЛЯ СЛАБОВИДЯЩИХ ==========
+    
+    function initAccessibilityMode() {
+        const accessibilityBtn = document.createElement('button');
+        accessibilityBtn.className = 'btn';
+        accessibilityBtn.id = 'accessibility-toggle';
+        accessibilityBtn.innerHTML = `
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10 4C4.58 4 0 7.58 0 12C0 16.42 4.58 20 10 20C15.42 20 20 16.42 20 12C20 7.58 15.42 4 10 4ZM10 18C5.69 18 2 15.31 2 12C2 8.69 5.69 6 10 6C14.31 6 18 8.69 18 12C18 15.31 14.31 18 10 18Z" fill="currentColor"/>
+                <path d="M10 8C8.34 8 7 9.34 7 11C7 12.66 8.34 14 10 14C11.66 14 13 12.66 13 11C13 9.34 11.66 8 10 8Z" fill="currentColor"/>
+            </svg>
+            <span id="accessibility-text">Доступность</span>
+        `;
+    
+        // Вставляем кнопку в controls
+        const controls = document.querySelector('.controls');
+        if (controls) {
+            controls.appendChild(accessibilityBtn);
+        }
+    
+        // Проверяем сохранённые настройки
+        const savedMode = localStorage.getItem('neuro-accessibility');
+        if (savedMode === 'enabled') {
+            enableAccessibilityMode();
+        }
+    
+        // Обработчик клика
+        accessibilityBtn.addEventListener('click', function() {
+            if (document.body.classList.contains('accessibility-mode')) {
+                disableAccessibilityMode();
+            } else {
+                enableAccessibilityMode();
+            }
+        });
+    }
+    
+    function enableAccessibilityMode() {
+        document.body.classList.add('accessibility-mode');
+        localStorage.setItem('neuro-accessibility', 'enabled');
+        
+        // Увеличиваем шрифт
+        document.body.style.fontSize = '18px';
+        
+        // Отключаем анимации
+        document.querySelectorAll('*').forEach(el => {
+            el.style.animation = 'none !important';
+            el.style.transition = 'none !important';
+        });
+        
+        // Обновляем текст кнопки
+        const textEl = document.getElementById('accessibility-text');
+        if (textEl) textEl.textContent = 'Обычный вид';
+        
+        // Применяем высокую контрастность
+        document.documentElement.style.setProperty('--bg-color', '#000000');
+        document.documentElement.style.setProperty('--text-color', '#FFFFFF');
+        document.documentElement.style.setProperty('--accent-color', '#FFFF00');
+        document.documentElement.style.setProperty('--card-bg', '#111111');
+        document.documentElement.style.setProperty('--border-color', '#FFFF00');
+    }
+    
+    function disableAccessibilityMode() {
+        document.body.classList.remove('accessibility-mode');
+        localStorage.setItem('neuro-accessibility', 'disabled');
+        
+        // Восстанавливаем шрифт
+        document.body.style.fontSize = '';
+        
+        // Восстанавливаем анимации
+        document.querySelectorAll('*').forEach(el => {
+            el.style.animation = '';
+            el.style.transition = '';
+        });
+        
+        // Обновляем текст кнопки
+        const textEl = document.getElementById('accessibility-text');
+        if (textEl) textEl.textContent = 'Доступность';
+        
+        // Восстанавливаем переменные темы
+        const isDark = document.body.classList.contains('dark-theme');
+        if (isDark) {
+            document.documentElement.style.setProperty('--bg-color', '#000000');
+            document.documentElement.style.setProperty('--text-color', '#FFFFFF');
+            document.documentElement.style.setProperty('--accent-color', '#818cf8');
+            document.documentElement.style.setProperty('--card-bg', '#111827');
+            document.documentElement.style.setProperty('--border-color', '#374151');
+        } else {
+            document.documentElement.style.setProperty('--bg-color', '#FFFFFF');
+            document.documentElement.style.setProperty('--text-color', '#000000');
+            document.documentElement.style.setProperty('--accent-color', '#4f46e5');
+            document.documentElement.style.setProperty('--card-bg', '#ffffff');
+            document.documentElement.style.setProperty('--border-color', '#e5e7eb');
+        }
+    }
+    
+    // Добавьте этот CSS в стили
+    const accessibilityCSS = `
+    /* Режим для слабовидящих */
+    .accessibility-mode .card {
+        border: 3px solid var(--accent-color) !important;
+    }
+    
+    .accessibility-mode a,
+    .accessibility-mode button {
+        outline: 2px solid var(--accent-color) !important;
+    }
+    
+    .accessibility-mode input,
+    .accessibility-mode textarea,
+    .accessibility-mode select {
+        border: 2px solid var(--accent-color) !important;
+        background-color: #000000 !important;
+        color: #FFFFFF !important;
+    }
+    
+    .accessibility-mode .hero {
+        background: #000000 !important;
+    }
+    
+    .accessibility-mode *:focus {
+        outline: 3px solid #FFFF00 !important;
+        outline-offset: 2px !important;
+    }
+    
+    /* Увеличенный интервал */
+    .accessibility-mode p,
+    .accessibility-mode li {
+        line-height: 1.8 !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    .accessibility-mode h1,
+    .accessibility-mode h2,
+    .accessibility-mode h3,
+    .accessibility-mode h4 {
+        letter-spacing: 1px !important;
+    }
+    `;
+    
+    // Добавляем стили в head
+    const styleEl = document.createElement('style');
+    styleEl.textContent = accessibilityCSS;
+    document.head.appendChild(styleEl);
+    
+    // Инициализируем при загрузке
+    document.addEventListener('DOMContentLoaded', function() {
+        initAccessibilityMode();
+    });
     </script>
 </body>
 </html>
