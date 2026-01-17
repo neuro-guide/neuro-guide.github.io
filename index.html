@@ -82,6 +82,36 @@
             --gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
             --gradient-2: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
         }
+
+        /* Режим слабовидящих */
+        .low-vision {
+          --bg-color: #000000;
+          --text-color: #ffffff;
+          --accent-color: #ffcc00;
+          --secondary-color: #1a1a1a;
+          --card-bg: #0d0d0d;
+          --border-color: #333333;
+          --shadow: 0 10px 25px rgba(255, 204, 0, 0.2);
+          font-size: 1.25rem !important;
+          line-height: 1.6 !important;
+        }
+        .low-vision h1 { font-size: 3.5rem !important; }
+        .low-vision h2 { font-size: 2.5rem !important; }
+        .low-vision h3 { font-size: 2rem !important; }
+        .low-vision .btn {
+          padding: 14px 24px !important;
+          font-size: 1.1rem !important;
+          border: 2px solid var(--accent-color) !important;
+        }
+        .low-vision .card {
+          border: 2px solid var(--accent-color) !important;
+        }
+        .low-vision code {
+          font-size: 1.1rem !important;
+          background: #1a1a1a !important;
+          padding: 10px !important;
+          border-radius: 6px !important;
+        }
         
         body {
             background-color: var(--bg-color);
@@ -452,6 +482,14 @@
 #language-list .dropdown-item,
 #language-btn,
 #theme-toggle,
+
+<button class="btn" id="accessibility-toggle">
+  <svg width="20" height="20" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M20 60 Q30 40 50 40 Q70 40 80 60 Q70 80 50 80 Q30 80 20 60 Z M120 60 Q130 40 150 40 Q170 40 180 60 Q170 80 150 80 Q130 80 120 60 Z M80 60 L120 60" stroke="currentColor" stroke-width="4" fill="none"/>
+  </svg>
+  <span id="accessibility-text">Контраст</span>
+</button>
+        
 .btn {
     text-rendering: optimizeSpeed !important;
     -webkit-font-smoothing: antialiased !important;
@@ -880,10 +918,42 @@ ${message}
     }
 }
 
+    // ========== РЕЖИМ СЛАБОВИДЯЩИХ ==========
+    function initAccessibilityToggle() {
+      const toggleBtn = document.getElementById('accessibility-toggle');
+      const textEl = document.getElementById('accessibility-text');
+    
+      // Проверяем сохранённый режим
+      if (localStorage.getItem('neuro-guide-lowvision') === 'enabled') {
+        enableLowVision();
+      }
+    
+      toggleBtn.addEventListener('click', () => {
+        if (document.body.classList.contains('low-vision')) {
+          disableLowVision();
+        } else {
+          enableLowVision();
+        }
+      });
+    
+      function enableLowVision() {
+        document.body.classList.add('low-vision');
+        localStorage.setItem('neuro-guide-lowvision', 'enabled');
+        textEl.textContent = 'Стандарт';
+      }
+    
+      function disableLowVision() {
+        document.body.classList.remove('low-vision');
+        localStorage.setItem('neuro-guide-lowvision', 'disabled');
+        textEl.textContent = 'Контраст';
+      }
+    }
+        
 // Инициализация формы при загрузке
 document.addEventListener('DOMContentLoaded', function() {
     // ... ваш существующий код ...
     initContactForm();
+    initAccessibilityToggle();
     // ... ваш существующий код ...
 });
         // ========== БЛОКИРОВКА ДЕЙСТВИЙ ПОЛЬЗОВАТЕЛЯ ==========
