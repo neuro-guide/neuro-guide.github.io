@@ -59,8 +59,8 @@
         
         /* Светлая тема по умолчанию */
         :root {
-            --bg-color: #FFFFFFFFFFFFFFFFFF;
-            --text-color: #00000000000000000000000000000;
+            --bg-color: #FFFFFF;
+            --text-color: #000000;
             --accent-color: #4f46e5;
             --secondary-color: #f3f4f6;
             --card-bg: #ffffff;
@@ -72,8 +72,8 @@
         
         /* Темная тема */
         .dark-theme {
-            --bg-color: #00000000000000000000000000000;
-            --text-color: #FFFFFFFFFFFFFFFFFF;
+            --bg-color: #000000;
+            --text-color: #FFFFFF;
             --accent-color: #818cf8;
             --secondary-color: #1f2937;
             --card-bg: #111827;
@@ -507,7 +507,7 @@ svg:hover[title] {
     <header>
         <div class="container header-content">
             <div class="logo">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path class="neural-path" d="M50,20 C70,20 80,40 80,50 C80,60 70,80 50,80 C30,80 20,60 20,50 C20,40 30,20 50,20 Z" />
                     <circle class="neural-circle" cx="50" cy="50" r="8" />
                     <path class="neural-path" d="M35,35 L65,65 M65,35 L35,65" />
@@ -518,7 +518,7 @@ svg:hover[title] {
             <div class="controls">
                 <div class="dropdown">
                     <button class="btn" id="language-btn">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z" stroke="currentColor" stroke-width="2"/>
                             <path d="M1 10H19" stroke="currentColor" stroke-width="2"/>
                             <path d="M10 1C12.5017 3.73835 13.9228 7.29212 14 11C13.9228 14.7079 12.5017 18.2616 10 21C7.49833 18.2616 6.07722 14.7079 6 11C6.07722 7.29212 7.49833 3.73835 10 1Z" stroke="currentColor" stroke-width="2"/>
@@ -531,7 +531,7 @@ svg:hover[title] {
                 </div>
                 
                 <button class="btn" id="theme-toggle">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" id="theme-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" id="theme-icon" aria-hidden="true">
                         <path d="M10 1V3M10 17V19M3 10H1M5.5 5.5L4 4M14.5 5.5L16 4M5.5 14.5L4 16M14.5 14.5L16 16M19 10H17M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     <span id="theme-text">Тёмная</span>
@@ -546,7 +546,7 @@ svg:hover[title] {
             <h1 id="hero-title">Jailbreak-гайд по нейросетям</h1>
             <p id="hero-subtitle">Полное руководство по обходу ограничений, промпт-инжинирингу и максимальной прокачке AI-моделей. Образовательный контент для изучения возможностей нейросетей.</p>
             <button class="btn btn-primary pulse" id="start-guide">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z" stroke="white" stroke-width="2"/>
                     <path d="M8 7L13 10L8 13V7Z" fill="white"/>
                 </svg>
@@ -555,7 +555,7 @@ svg:hover[title] {
         </div>
         
         <!-- SVG элемент для фона -->
-        <svg width="100%" height="200" viewBox="0 0 1200 200" preserveAspectRatio="none" style="position: absolute; bottom: 0; left: 0;">
+        <svg width="100%" height="200" viewBox="0 0 1200 200" preserveAspectRatio="none" style="position: absolute; bottom: 0; left: 0;" aria-hidden="true">
             <path d="M0,150 Q300,50 600,150 T1200,150 L1200,200 L0,200 Z" fill="var(--bg-color)" opacity="0.9"/>
         </svg>
     </section>
@@ -566,14 +566,14 @@ svg:hover[title] {
             <h2 class="section-title" id="guide-title">Полный гайд по нейросетям</h2>
             
             <div class="warning-message selectable">
-                <strong>⚠️ Внимание:</strong> Этот сайт предоставляет исключительно образовательную информацию о возможностях нейросетей и промпт-инжиниринга. Контент предназначен для изучения технологий AI и не призывает к нарушению правил использования сервисов. Помните, что попытки обхода ограничений AI-систем могут нарушать условия использования сервисов. АУЕ - экстремистское движение, запрещенное в РФ и многих других странах.
+                <strong>⚠️ Внимание:</strong> Этот сайт предоставляет исключительно образовательную информацию о возможностях нейросетей и промпт-инжиниринга. Контент предназначен для изучения технологий AI и не призывает к нарушению правил использования сервисов. Помните, что попытки обхода ограничений AI-систем могут нарушать условия использования сервисов.
             </div>
             
             <!-- Карточки с разделами -->
             <div class="cards">
                 <div class="card">
                     <div class="card-icon">
-                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path d="M15 3C8.37258 3 3 8.37258 3 15C3 21.6274 8.37258 27 15 27C21.6274 27 27 21.6274 27 15C27 8.37258 21.6274 3 15 3Z" stroke="white" stroke-width="2"/>
                             <path d="M15 10V15L18 18" stroke="white" stroke-width="2" stroke-linecap="round"/>
                         </svg>
@@ -587,7 +587,7 @@ svg:hover[title] {
                 
                 <div class="card">
                     <div class="card-icon">
-                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path d="M12 6L20 12L12 18V6Z" fill="white"/>
                             <path d="M6 6H10V24H6V6Z" fill="white"/>
                             <path d="M20 6H24V24H20V6Z" fill="white"/>
@@ -602,7 +602,7 @@ svg:hover[title] {
                 
                 <div class="card">
                     <div class="card-icon">
-                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path d="M15 5L19 11L26 12.5L22 18L22.5 25.5L15 22.5L7.5 25.5L8 18L4 12.5L11 11L15 5Z" stroke="white" stroke-width="2" fill="none"/>
                         </svg>
                     </div>
@@ -641,14 +641,14 @@ svg:hover[title] {
                 
                 <div style="display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap;">
                     <button class="btn" id="prev-btn">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         <span id="prev-text">Назад</span>
                     </button>
                     <button class="btn btn-primary" id="next-btn">
                         <span id="next-text">Далее</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <path d="M6 12L10 8L6 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
@@ -685,12 +685,12 @@ svg:hover[title] {
                 
                 <div class="footer-section">
                     <h4 class="footer-title" id="contact-title">Контакты</h4>
-                    <p id="contact-text">По вопросам сотрудничества и предложениям: nenormikchel@gmail.com</p>
+                    <p id="contact-text">По вопросам сотрудничества и предложениям: contact@neuro-guide.example.com</p>
                 </div>
             </div>
             
             <div class="footer-disclaimer selectable">
-                <p><strong>Дисклеймер:</strong> Данный сайт является исключительно образовательным ресурсом и не призывает к нарушению правил использования AI-сервисов. Вся информация предоставляется для изучения технологий и повышения цифровой грамотности. АУЕ (Арестантский уклад един) признано экстремистским движением и запрещено на территории Российской Федерации и многих других стран. Мы не поддерживаем и не пропагандируем какие-либо экстремистские организации или движения.</p>
+                <p><strong>Дисклеймер:</strong> Данный сайт является исключительно образовательным ресурсом и не призывает к нарушению правил использования AI-сервисов. Вся информация предоставляется для изучения технологий и повышения цифровой грамотности.</p>
                 <p>© 2026 Neuro Guide. Все права защищены. Контент защищен от копирования.</p>
             </div>
         </div>
@@ -914,7 +914,7 @@ const translations = {
         'legal-title': 'Правовая информация',
         'legal-text': 'Контент предоставляется исключительно в образовательных целях. Автор не несет ответственности за использование информации в нарушение правил AI-сервисов.',
         'contact-title': 'Контакты',
-        'contact-text': 'По вопросам сотрудничества и предложениям: nenormikchel@gmail.com',
+        'contact-text': 'По вопросам сотрудничества и предложениям: contact@neuro-guide.example.com',
         'theme-text': 'Тёмная',
         'lang-name': 'Русский'
     },
@@ -953,7 +953,7 @@ const translations = {
         'legal-title': 'Прававая інфармацыя',
         'legal-text': 'Кантэнт прадастаўляецца выключна ў адукацыйных мэтах. Аўтар нясе адказнасць за выкарыстанне інфармацыі ў парушэнне правілаў AI-сэрвісаў.',
         'contact-title': 'Кантакты',
-        'contact-text': 'Па пытаннях супрацоўніцтва і прапановаў: nenormikchel@gmail.com',
+        'contact-text': 'Па пытаннях супрацоўніцтва і прапановаў: contact@neuro-guide.example.com',
         'theme-text': 'Цёмная',
         'lang-name': 'Беларуская'
     },
@@ -992,7 +992,7 @@ const translations = {
         'legal-title': 'Правова інформація',
         'legal-text': 'Контент надається виключно в освітніх цілях. Автор не несе відповідальності за використання інформації в порушення правил AI-сервісів.',
         'contact-title': 'Контакти',
-        'contact-text': 'З питань співпраці та пропозицій: nenormikchel@gmail.com',
+        'contact-text': 'З питань співпраці та пропозицій: contact@neuro-guide.example.com',
         'theme-text': 'Темна',
         'lang-name': 'Українська'
     },
@@ -1031,7 +1031,7 @@ const translations = {
         'legal-title': 'Құқықтық ақпарат',
         'legal-text': 'Контент тек білім беру мақсаттарында ұсынылады. Автор AI-сервистердің ережелерін бұзудағы ақпаратты пайдалану үшін жауапкершілік тартпайды.',
         'contact-title': 'Байланыс',
-        'contact-text': 'Ынтымақтастық және ұсыныстар бойынша: nenormikchel@gmail.com',
+        'contact-text': 'Ынтымақтастық және ұсыныстар бойынша: contact@neuro-guide.example.com',
         'theme-text': 'Қараңғы',
         'lang-name': 'Қазақша'
     },
@@ -1070,7 +1070,7 @@ const translations = {
         'legal-title': '法律信息',
         'legal-text': '內容僅用於教育目的。作者不對違反AI服務規則使用信息負責。',
         'contact-title': '聯繫方式',
-        'contact-text': '合作和建議請聯繫：nenormikchel@gmail.com',
+        'contact-text': '合作和建議請聯繫：contact@neuro-guide.example.com',
         'theme-text': '深色',
         'lang-name': '中文(繁體)'
     },
@@ -1109,7 +1109,7 @@ const translations = {
         'legal-title': '법적 정보',
         'legal-text': '콘텐츠는 교육 목적으로만 제공됩니다. 작성자는 AI 서비스 규칙 위반 정보 사용에 대해 책임을 지지 않습니다.',
         'contact-title': '연락처',
-        'contact-text': '협업 및 제안 사항: nenormikchel@gmail.com',
+        'contact-text': '협업 및 제안 사항: contact@neuro-guide.example.com',
         'theme-text': '어두운',
         'lang-name': '한국어'
     },
@@ -1148,7 +1148,7 @@ const translations = {
         'legal-title': '法的情報',
         'legal-text': 'コンテンツは教育目的でのみ提供されます。著者はAIサービス規則違反の情報使用について責任を負いません。',
         'contact-title': '連絡先',
-        'contact-text': '協力と提案について：nenormikchel@gmail.com',
+        'contact-text': '協力と提案について：contact@neuro-guide.example.com',
         'theme-text': 'ダーク',
         'lang-name': '日本語'
     },
@@ -1183,11 +1183,11 @@ const translations = {
             'مقالات علمية حول أخلاقيات استخدام الذكاء الاصطناعي'
         ],
         'about-title': 'حول المشروع',
-        'about-text': 'مشروع تعليمي مخصص لدراسة قدرات الشبكات العصبية وهندسة المحфزات. الهدف هو تقديم مواد عالية الجودة للتفاعل الآمن والفعال مع الذكاء الاصطناعي.',
+        'about-text': 'مشروع تعليمي مخصص لدراسة قدرات الشبكات العصبية وهندسة المحفزات. الهدف هو تقديم مواد عالية الجودة للتفاعل الآمن والفعال مع الذكاء الاصطناعي.',
         'legal-title': 'المعلومات القانونية',
         'legal-text': 'يتم تقديم المحتوى لأغراض تعليمية فقط. لا يتحمل المؤلف المسؤولية عن استخدام المعلومات المخالف لقواعد خدمات الذكاء الاصطناعي.',
         'contact-title': 'جهات الاتصال',
-        'contact-text': 'للاستفسارات التعاونية والاقتراحات: nenormikchel@gmail.com',
+        'contact-text': 'للاستفسارات التعاونية والاقتراحات: contact@neuro-guide.example.com',
         'theme-text': 'داكن',
         'lang-name': 'العربية'
     },
@@ -1226,7 +1226,7 @@ const translations = {
         'legal-title': 'اطلاعات حقوقی',
         'legal-text': 'محتوا صرفاً برای اهداف آموزشی ارائه می‌شود. نویسنده مسئولیت استفاده از اطلاعات در نقض قوانین خدمات AI را بر عهده نمی‌گیرد.',
         'contact-title': 'تماس',
-        'contact-text': 'برای همکاری و پیشنهادات: nenormikchel@gmail.com',
+        'contact-text': 'برای همکاری و پیشنهادات: contact@neuro-guide.example.com',
         'theme-text': 'تیره',
         'lang-name': 'فارسی'
     },
@@ -1265,7 +1265,7 @@ const translations = {
         'legal-title': 'قانونی معلومات',
         'legal-text': 'مواد صرف تعلیمی مقاصد کے لیے فراہم کی جاتی ہے۔ مصنف AI خدمات کے قواعد کی خلاف ورزی میں معلومات کے استعمال کے لیے ذمہ دار نہیں ہے۔',
         'contact-title': 'رابطے',
-        'contact-text': 'تعاون اور تجاویز کے لیے: nenormikchel@gmail.com',
+        'contact-text': 'تعاون اور تجاویز کے لیے: contact@neuro-guide.example.com',
         'theme-text': 'سیاہ',
         'lang-name': 'اردو'
     },
@@ -1274,7 +1274,7 @@ const translations = {
         'hero-subtitle': 'Guida completa per eludere limitazioni, prompt engineering e massimizzazione dei modelli AI. Contenuto educativo per imparare le capacità delle reti neurali.',
         'start-btn-text': 'Inizia ad Apprendere',
         'guide-title': 'Guida Completa alle Reti Neurali',
-        'card1-title': 'Fondamenti di Prompt Engineering',
+        'card1-title': 'Fondamentali di Prompt Engineering',
         'card1-text': 'Impara le tecniche di base per creare prompt per reti neurali. Scopri come formulare correttamente le query per ottenere risposte accurate e pertinenti dai modelli AI.',
         'card2-title': 'Elusione delle Limitazioni (Jailbreak)',
         'card2-text': 'Studia i metodi per testare in sicurezza i confini delle capacità delle reti neurali. Scopri come funzionano le limitazioni AI e quali approcci vengono utilizzati per espandere la funzionalità.',
@@ -1304,7 +1304,7 @@ const translations = {
         'legal-title': 'Informazioni Legali',
         'legal-text': 'I contenuti sono forniti solo a scopo educativo. L\'autore non è responsabile per l\'uso delle informazioni in violazione delle regole dei servizi AI.',
         'contact-title': 'Contatti',
-        'contact-text': 'Per collaborazioni e suggerimenti: nenormikchel@gmail.com',
+        'contact-text': 'Per collaborazioni e suggerimenti: contact@neuro-guide.example.com',
         'theme-text': 'Scuro',
         'lang-name': 'Italiano'
     },
@@ -1343,7 +1343,7 @@ const translations = {
         'legal-title': 'Informações Legais',
         'legal-text': 'O conteúdo é fornecido apenas para fins educacionais. O autor não se responsabiliza pelo uso de informações em violação das regras dos serviços de IA.',
         'contact-title': 'Contatos',
-        'contact-text': 'Para colaboração e sugestões: nenormikchel@gmail.com',
+        'contact-text': 'Para colaboração e sugestões: contact@neuro-guide.example.com',
         'theme-text': 'Escuro',
         'lang-name': 'Português (BR)'
     },
@@ -1382,7 +1382,7 @@ const translations = {
         'legal-title': 'Informations Légales',
         'legal-text': 'Le contenu est fourni à des fins éducatives uniquement. L\'auteur n\'est pas responsable de l\'utilisation des informations en violation des règles des services d\'IA.',
         'contact-title': 'Contacts',
-        'contact-text': 'Pour collaboration et suggestions : nenormikchel@gmail.com',
+        'contact-text': 'Pour collaboration et suggestions : contact@neuro-guide.example.com',
         'theme-text': 'Sombre',
         'lang-name': 'Français'
     },
@@ -1421,7 +1421,7 @@ const translations = {
         'legal-title': 'Información Legal',
         'legal-text': 'El contenido se proporciona solo con fines educativos. El autor no se hace responsable del uso de la información en violación de las reglas de los servicios de IA.',
         'contact-title': 'Contactos',
-        'contact-text': 'Para colaboración y sugerencias: nenormikchel@gmail.com',
+        'contact-text': 'Para colaboración y sugerencias: contact@neuro-guide.example.com',
         'theme-text': 'Oscuro',
         'lang-name': 'Español (LATAM)'
     },
@@ -1460,7 +1460,7 @@ const translations = {
         'legal-title': 'Informații Legale',
         'legal-text': 'Conținutul este furnizat doar în scopuri educaționale. Autorul nu este responsabil pentru utilizarea informațiilor încălcând regulile serviciilor AI.',
         'contact-title': 'Contacte',
-        'contact-text': 'Pentru colaborare și sugestii: nenormikchel@gmail.com',
+        'contact-text': 'Pentru colaborare și sugestii: contact@neuro-guide.example.com',
         'theme-text': 'Întunecat',
         'lang-name': 'Română'
     },
@@ -1499,7 +1499,7 @@ const translations = {
         'legal-title': 'Jogi Információk',
         'legal-text': 'A tartalom kizárólag oktatási célokat szolgál. A szerző nem vállal felelősséget az információk AI szolgáltatási szabályok megsértésével történő felhasználásáért.',
         'contact-title': 'Kapcsolat',
-        'contact-text': 'Együttműködésre és javaslatokra: nenormikchel@gmail.com',
+        'contact-text': 'Együttműködésre és javaslatokra: contact@neuro-guide.example.com',
         'theme-text': 'Sötét',
         'lang-name': 'Magyar'
     },
@@ -1538,7 +1538,7 @@ const translations = {
         'legal-title': 'Правна Информация',
         'legal-text': 'Съдържанието се предоставя само за образователни цели. Авторът не носи отговорност за използването на информация в нарушение на правилата на AI услугите.',
         'contact-title': 'Контакти',
-        'contact-text': 'За сътрудничество и предложения: nenormikchel@gmail.com',
+        'contact-text': 'За сътрудничество и предложения: contact@neuro-guide.example.com',
         'theme-text': 'Тъмна',
         'lang-name': 'Български'
     },
@@ -1577,7 +1577,7 @@ const translations = {
         'legal-title': 'Νομικές Πληροφορίες',
         'legal-text': 'Το περιεχόμενο παρέχεται μόνο για εκπαιδευτικούς σκοπούς. Ο συγγραφέας δεν φέρει ευθύνη για τη χρήση πληροφοριών σε παραβίαση κανόνων υπηρεσιών ΤΝ.',
         'contact-title': 'Επαφές',
-        'contact-text': 'Για συνεργασία και προτάσεις: nenormikchel@gmail.com',
+        'contact-text': 'Για συνεργασία και προτάσεις: contact@neuro-guide.example.com',
         'theme-text': 'Σκούρο',
         'lang-name': 'Ελληνικά'
     },
@@ -1616,7 +1616,7 @@ const translations = {
         'legal-title': 'Legal Information',
         'legal-text': 'Content is provided for educational purposes only. The author is not responsible for the use of information in violation of AI service rules.',
         'contact-title': 'Contacts',
-        'contact-text': 'For cooperation and suggestions: nenormikchel@gmail.com',
+        'contact-text': 'For cooperation and suggestions: contact@neuro-guide.example.com',
         'theme-text': 'Dark',
         'lang-name': 'English'
     },
@@ -1655,7 +1655,7 @@ const translations = {
         'legal-title': 'Rechtliche Informationen',
         'legal-text': 'Inhalte werden nur zu Bildungszwecken bereitgestellt. Der Autor ist nicht verantwortlich für die Nutzung von Informationen, die gegen KI-Service-Regeln verstoßen.',
         'contact-title': 'Kontakte',
-        'contact-text': 'Für Zusammenarbeit und Vorschläge: nenormikchel@gmail.com',
+        'contact-text': 'Für Zusammenarbeit und Vorschläge: contact@neuro-guide.example.com',
         'theme-text': 'Dunkel',
         'lang-name': 'Deutsch'
     },
@@ -1694,7 +1694,7 @@ const translations = {
         'legal-title': 'Informacje Prawne',
         'legal-text': 'Treść jest udostępniana wyłącznie w celach edukacyjnych. Autor nie ponosi odpowiedzialności za wykorzystanie informacji w naruszeniu zasad usług AI.',
         'contact-title': 'Kontakty',
-        'contact-text': 'Współpraca i sugestie: nenormikchel@gmail.com',
+        'contact-text': 'Współpraca i sugestie: contact@neuro-guide.example.com',
         'theme-text': 'Ciemny',
         'lang-name': 'Polski'
     },
@@ -1733,7 +1733,7 @@ const translations = {
         'legal-title': 'Juridische Informatie',
         'legal-text': 'Inhoud wordt alleen voor educatieve doeleinden verstrekt. De auteur is niet verantwoordelijk voor het gebruik van informatie in strijd met AI-serviceregels.',
         'contact-title': 'Contacten',
-        'contact-text': 'Voor samenwerking en suggesties: nenormikchel@gmail.com',
+        'contact-text': 'Voor samenwerking en suggesties: contact@neuro-guide.example.com',
         'theme-text': 'Donker',
         'lang-name': 'Nederlands'
     },
@@ -1772,7 +1772,7 @@ const translations = {
         'legal-title': 'कानूनी जानकारी',
         'legal-text': 'सामग्री केवल शैक्षिक उद्देश्यों के लिए प्रदान की जाती है। लेखक एआई सेवा नियमों के उल्लंघन में जानकारी के उपयोग के लिए जिम्मेदार नहीं है।',
         'contact-title': 'संपर्क',
-        'contact-text': 'सहयोग और सुझावों के लिए: nenormikchel@gmail.com',
+        'contact-text': 'सहयोग और सुझावों के लिए: contact@neuro-guide.example.com',
         'theme-text': 'डार्क',
         'lang-name': 'हिन्दी'
     },
@@ -1811,7 +1811,7 @@ const translations = {
         'legal-title': 'Informasi Hukum',
         'legal-text': 'Konten disediakan hanya untuk tujuan pendidikan. Penulis tidak bertanggung jawab atas penggunaan informasi yang melanggar aturan layanan AI.',
         'contact-title': 'Kontak',
-        'contact-text': 'Untuk kerja sama dan saran: nenormikchel@gmail.com',
+        'contact-text': 'Untuk kerja sama dan saran: contact@neuro-guide.example.com',
         'theme-text': 'Gelap',
         'lang-name': 'Bahasa Indonesia'
     },
@@ -1850,7 +1850,7 @@ const translations = {
         'legal-title': 'ข้อมูลทางกฎหมาย',
         'legal-text': 'เนื้อหาให้สำหรับวัตถุประสงค์การศึกษาเท่านั้น ผู้เขียนไม่รับผิดชอบต่อการใช้ข้อมูลที่ละเมิดกฎของบริการ AI',
         'contact-title': 'ติดต่อ',
-        'contact-text': 'สำหรับความร่วมมือและข้อเสนอแนะ: nenormikchel@gmail.com',
+        'contact-text': 'สำหรับความร่วมมือและข้อเสนอแนะ: contact@neuro-guide.example.com',
         'theme-text': 'มืด',
         'lang-name': 'ไทย'
     },
@@ -1889,7 +1889,7 @@ const translations = {
         'legal-title': 'Yasal Bilgiler',
         'legal-text': 'İçerik yalnızca eğitim amaçlı sağlanmaktadır. Yazar, AI hizmet kurallarını ihlal eden bilgilerin kullanımından sorumlu değildir.',
         'contact-title': 'İletişim',
-        'contact-text': 'İşbirliği ve öneriler için: nenormikchel@gmail.com',
+        'contact-text': 'İşbirliği ve öneriler için: contact@neuro-guide.example.com',
         'theme-text': 'Koyu',
         'lang-name': 'Türkçe'
     },
@@ -1928,7 +1928,7 @@ const translations = {
         'legal-title': 'Huquqiy Ma\'lumot',
         'legal-text': 'Kontent faqat ta\'lim maqsadlarida taqdim etiladi. Muallif AI xizmatlari qoidalarini buzishda ma\'lumotlardan foydalanish uchun javobgar emas.',
         'contact-title': 'Aloqa',
-        'contact-text': 'Hamkorlik va takliflar uchun: nenormikchel@gmail.com',
+        'contact-text': 'Hamkorlik va takliflar uchun: contact@neuro-guide.example.com',
         'theme-text': 'Qorong\'i',
         'lang-name': 'Oʻzbekcha'
     },
@@ -1967,7 +1967,7 @@ const translations = {
         'legal-title': 'מידע משפטי',
         'legal-text': 'התוכן מסופק למטרות חינוכיות בלבד. המחבר אינו אחראי לשימוש במידע בהפרת כללי שירותי הבינה המלאכותית.',
         'contact-title': 'אנשי קשר',
-        'contact-text': 'לשיתוף פעולה והצעות: nenormikchel@gmail.com',
+        'contact-text': 'לשיתוף פעולה והצעות: contact@neuro-guide.example.com',
         'theme-text': 'כהה',
         'lang-name': 'עברית'
     },
@@ -2006,7 +2006,7 @@ const translations = {
         'legal-title': 'Правне Информације',
         'legal-text': 'Садржај се пружа само за образовне сврхе. Аутор није одговоран за коришћење информација у кршењу правила AI сервиса.',
         'contact-title': 'Контакти',
-        'contact-text': 'За сарадњу и сугестије: nenormikchel@gmail.com',
+        'contact-text': 'За сарадњу и сугестије: contact@neuro-guide.example.com',
         'theme-text': 'Тамна',
         'lang-name': 'Српски'
     },
@@ -2045,7 +2045,7 @@ const translations = {
         'legal-title': 'ဥပဒေရေးရာအချက်အလက်များ',
         'legal-text': 'ပါဝင်မှုကိုပညာရေးဆိုင်ရာအခြခံအားဖြင့်သာပေးအပ်သည်။ စာရေးသူသည် AI ဝန်ဆောင်မှုစည်းမျဉ်းများချိုးဖောက်ခြင်းတွင်အချက်အလက်များအသုံးပြုမှုအတွက်တာဝန်မရှိပါ။',
         'contact-title': 'ဆက်သွယ်ရန်',
-        'contact-text': 'ပူးပေါင်းဆောင်ရွက်မှုနှင့်အကြံပြုချက်များအတွက်: nenormikchel@gmail.com',
+        'contact-text': 'ပူးပေါင်းဆောင်ရွက်မှုနှင့်အကြံပြုချက်များအတွက်: contact@neuro-guide.example.com',
         'theme-text': 'မှောင်သော',
         'lang-name': 'မြန်မာ'
     },
@@ -2084,7 +2084,7 @@ const translations = {
         'legal-title': 'আইনি তথ্য',
         'legal-text': 'বিষয়বস্তু শুধুমাত্র শিক্ষামূলক উদ্দেশ্যে সরবরাহ করা হয়। লেখক এআই পরিষেবার নিয়ম লঙ্ঘন করে তথ্য ব্যবহারের জন্য দায়ী নন।',
         'contact-title': 'যোগাযোগ',
-        'contact-text': 'সহযোগিতা এবং পরামর্শের জন্য: nenormikchel@gmail.com',
+        'contact-text': 'সহযোগিতা এবং পরামর্শের জন্য: contact@neuro-guide.example.com',
         'theme-text': 'ডার্ক',
         'lang-name': 'বাংলা'
     },
@@ -2123,11 +2123,10 @@ const translations = {
         'legal-title': 'Fakamatala Lao',
         'legal-text': 'ʻOku ʻoatu e fakamatala ki he ngaahi meʻa akoʻanga pe. ʻOku ʻikai tali ʻe he tokotaha tohi e ngāueʻaki ʻo e fakamatala ʻi he hala ʻo e ngaahi lao ʻa e ngaahi sevesi AI.',
         'contact-title': 'Ngaahi Fehokotakiʻanga',
-        'contact-text': 'Ki he fekauʻaki mo e ngaahi fakangatangata: nenormikchel@gmail.com',
+        'contact-text': 'Ki he fekauʻaki mo e ngaahi fakangatangata: contact@neuro-guide.example.com',
         'theme-text': 'ʻUliʻuli',
         'lang-name': 'Niuē'
     },
-
     'sv-SE': {
         'hero-title': 'Jailbreak-guide för Neurala Nätverk',
         'hero-subtitle': 'Komplett guide för att kringgå begränsningar, prompt-engineering och maximering av AI-modeller. Utbildningsinnehåll för att lära sig neurala nätverks möjligheter.',
@@ -2163,19 +2162,17 @@ const translations = {
         'legal-title': 'Juridisk Information',
         'legal-text': 'Innehåll tillhandahålls endast i utbildningssyfte. Författaren ansvarar inte för användning av information i strid med AI-tjänsteregler.',
         'contact-title': 'Kontakter',
-        'contact-text': 'För samarbete och förslag: nenormikchel@gmail.com', // ← ИСПРАВИЛ НА ТВОЙ EMAIL
+        'contact-text': 'För samarbete och förslag: contact@neuro-guide.example.com',
         'theme-text': 'Mörkt',
         'lang-name': 'Svenska'
     },
-
-    // ДАТСКИЙ (DA-DK)
     'da-DK': {
         'hero-title': 'Jailbreak-guide til Neurale Netværk',
         'hero-subtitle': 'Komplet guide til at omgå begrænsninger, prompt-engineering og maksimering af AI-modeller. Uddannelsesindhold til at lære neurale netværks muligheder.',
         'start-btn-text': 'Start Læring',
         'guide-title': 'Komplet Guide til Neurale Netværk',
         'card1-title': 'Grundlæggende Prompt-Engineering',
-        'card1-text': 'Lær grundlæggende teknikker til at oprette prompts til neurale netværk. Opdag hvordan man korrekt formulerer forespørgsler for at få nøjagtige og relevante svar fra AI-modeller.',
+        'card1-text': 'Lær grundlæggende tekniker til at oprette prompts til neurale netværk. Opdag hvordan man korrekt formulerer forespørgsler for at få nøjagtige og relevante svar fra AI-modeller.',
         'card2-title': 'Omgå Begrænsninger (Jailbreak)',
         'card2-text': 'Studer metoder til sikkert at teste grænserne for neurale netværks evner. Lær hvordan AI-begrænsninger fungerer og hvilke tilgange der bruges til at udvide funktionalitet.',
         'card3-title': 'Avancerede Teknikker',
@@ -2208,8 +2205,6 @@ const translations = {
         'theme-text': 'Mørk',
         'lang-name': 'Dansk'
     },
-
-// НОРВЕЖСКИЙ (NB-NO)
     'nb-NO': {
         'hero-title': 'Jailbreak-guide for Nevrale Nettverk',
         'hero-subtitle': 'Komplett guide for å omgå begrensninger, prompt-engineering og maksimering av AI-modeller. Utdanningsinnhold for å lære nevrale nettverks muligheter.',
@@ -2224,10 +2219,10 @@ const translations = {
         'detail-title': 'Trinn 1: Grunnleggende Interaksjon med Nevrale Nettverk',
         'detail-text': 'En velformulert prompt er 90% av suksess i arbeid med nevrale nettverk. Her er hovedprinsippene:',
         'detail-list': [
-        'Formuler oppgaven klart – det nevrale nettverket leser ikke tanker',
-        'Bruk kontekst – jo mer relevant informasjon, desto bedre resultat',
-        'Sett opp svarstruktur – på denne måten vil AI forstå nøyaktig hva du forventer',
-        'Iterativ tilnærming – avklare spørringer basert på tidligere svar'
+            'Formuler oppgaven klart – det nevrale nettverket leser ikke tanker',
+            'Bruk kontekst – jo mer relevant informasjon, desto bedre resultat',
+            'Sett opp svarstruktur – på denne måten vil AI forstå nøyaktig hva du forventer',
+            'Iterativ tilnærming – avklare spørringer basert på tidligere svar'
         ],
         'example-title': 'Eksempel på effektiv prompt:',
         'prev-text': 'Tilbake',
@@ -2249,8 +2244,6 @@ const translations = {
         'theme-text': 'Mørk',
         'lang-name': 'Norsk'
     },
-
-// ФИНСКИЙ (FI-FI)
     'fi-FI': {
         'hero-title': 'Jailbreak-opas Neuroverkkoihin',
         'hero-subtitle': 'Täydellinen opas rajoituksen kiertämiseen, prompt-engineeringiin ja AI-mallien maksimointiin. Koulutussisältö neuroverkkojen mahdollisuuksien oppimiseen.',
@@ -2290,8 +2283,6 @@ const translations = {
         'theme-text': 'Tumma',
         'lang-name': 'Suomi'
     },
-
-     // АРМЯНСКИЙ (HY-AM)
     'hy-AM': {
         'hero-title': 'Նեյրոնային Ցանցերի Jailbreak Ուղեցույց',
         'hero-subtitle': 'Լրիվ ուղեցույց սահմանափակումները շրջանցելու, հրահանգների ինժեներական և AI մոդելների առավելագույնի հասցնելու համար: Կրթական նյութ նեյրոնային ցանցերի հնարավորությունները սովորելու համար:',
@@ -2331,8 +2322,6 @@ const translations = {
         'theme-text': 'Մուգ',
         'lang-name': 'Հայերեն'
     },
-    
-    // ГРУЗИНСКИЙ (KA-GE)
     'ka-GE': {
         'hero-title': 'ნევრონული ქსელების Jailbreak გიდი',
         'hero-subtitle': 'სრული გიდი შეზღუდვების შემოვლა, პრომპტის ინჟინერია და AI მოდელების მაქსიმიზაციისთვის. საგანმანათლებლო კონტენტი ნევრონული ქსელების შესაძლებლობების შესასწავლად.',
@@ -2372,7 +2361,6 @@ const translations = {
         'theme-text': 'მუქი',
         'lang-name': 'ქართული'
     }
-
 }; // ← КОНЕЦ ОБЪЕКТА translations
         
         // Инициализация языкового меню
@@ -2518,14 +2506,12 @@ const translations = {
             const originalText = startBtn.querySelector('span').textContent;
             
             startBtn.addEventListener('click', function() {
-                startBtn.innerHTML = '<span>Загрузка...</span>';
+                const span = startBtn.querySelector('span');
+                span.textContent = lang === 'en-US' ? 'Loading...' : 'Загрузка...';
                 startBtn.disabled = true;
                 
                 setTimeout(() => {
-                    startBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z" stroke="white" stroke-width="2"/>
-                        <path d="M8 7L13 10L8 13V7Z" fill="white"/>
-                    </svg><span>${originalText}</span>`;
+                    span.textContent = originalText;
                     startBtn.disabled = false;
                     
                     // Прокрутка к контенту
@@ -2557,77 +2543,116 @@ const translations = {
             });
             
             function updateStepContent() {
-                const stepTitles = [
-                    'Шаг 1: Основы взаимодействия с нейросетями',
-                    'Шаг 2: Техники обхода ограничений',
-                    'Шаг 3: Продвинутые методы промпт-инжиниринга'
-                ];
-                
-                const stepTexts = [
-                    'Правильно составленный промпт — это 90% успеха в работе с нейросетями. Вот ключевые принципы:',
-                    'Изучи методы безопасного тестирования границ возможностей нейросетей. Узнай, как работают ограничения AI.',
-                    'Освой техники цепочек промптов, few-shot обучения, эмоционального инжиниринга и других продвинутых методов.'
-                ];
-                
-                const stepLists = [
-                    [
-                        'Чётко формулируй задачу — нейросеть не читает мысли',
-                        'Используй контекст — чем больше релевантной информации, тем лучше результат',
-                        'Задавай структуру ответа — так AI будет понимать, что именно ты ждёшь',
-                        'Итеративный подход — уточняй запросы на основе предыдущих ответов'
-                    ],
-                    [
-                        'Метод "Данвича" — постепенное раскрытие темы',
-                        'Ролевое моделирование — присвоение AI специфической роли',
-                        'Контекстуальный джихад — использование специфического контекста',
-                        'Эмоциональный инжиниринг — воздействие на эмоциональный отклик модели'
-                    ],
-                    [
-                        'Цепочки промптов (Prompt Chaining) — разбиение сложной задачи на этапы',
-                        'Few-shot learning — предоставление примеров для обучения модели',
-                        'Эмоциональный инжиниринг — использование эмоциональных триггеров',
-                        'Стилистическое программирование — задание стиля ответа'
-                    ]
-                ];
-                
-                // Обновление контента в зависимости от языка
                 const lang = document.getElementById('main-html').getAttribute('lang');
-                if (lang === 'en-US') {
-                    stepTitles[0] = 'Step 1: Basics of AI Interaction';
-                    stepTitles[1] = 'Step 2: Bypass Techniques';
-                    stepTitles[2] = 'Step 3: Advanced Prompt Engineering';
-                    
-                    stepTexts[0] = 'A well-crafted prompt is 90% of success in working with neural networks. Here are the key principles:';
-                    stepTexts[1] = 'Study methods for safely testing the boundaries of neural network capabilities. Learn how AI limitations work.';
-                    stepTexts[2] = 'Master techniques of prompt chains, few-shot learning, emotional engineering and other advanced methods.';
-                    
-                    stepLists[0] = [
-                        'Clearly formulate the task - the neural network does not read minds',
-                        'Use context - the more relevant information, the better the result',
-                        'Set the answer structure - this way AI will understand what exactly you expect',
-                        'Iterative approach - clarify queries based on previous answers'
-                    ];
-                    
-                    stepLists[1] = [
-                        'The "Danvich" method - gradual disclosure of the topic',
-                        'Role modeling - assigning a specific role to AI',
-                        'Contextual engineering - using specific context',
-                        'Emotional engineering - influencing the emotional response of the model'
-                    ];
-                    
-                    stepLists[2] = [
-                        'Prompt Chaining - breaking down a complex task into stages',
-                        'Few-shot learning - providing examples for model training',
-                        'Emotional engineering - using emotional triggers',
-                        'Stylistic programming - setting the response style'
-                    ];
-                }
                 
-                document.getElementById('detail-title').textContent = stepTitles[currentStep - 1];
-                document.getElementById('detail-text').textContent = stepTexts[currentStep - 1];
+                const stepTitles = {
+                    'ru-RU': [
+                        'Шаг 1: Основы взаимодействия с нейросетями',
+                        'Шаг 2: Техники обхода ограничений',
+                        'Шаг 3: Продвинутые методы промпт-инжиниринга'
+                    ],
+                    'en-US': [
+                        'Step 1: Basics of AI Interaction',
+                        'Step 2: Bypass Techniques',
+                        'Step 3: Advanced Prompt Engineering'
+                    ],
+                    'default': [
+                        'Step 1: Basics of AI Interaction',
+                        'Step 2: Bypass Techniques', 
+                        'Step 3: Advanced Prompt Engineering'
+                    ]
+                };
+                
+                const stepTexts = {
+                    'ru-RU': [
+                        'Правильно составленный промпт — это 90% успеха в работе с нейросетями. Вот ключевые принципы:',
+                        'Изучи методы безопасного тестирования границ возможностей нейросетей. Узнай, как работают ограничения AI.',
+                        'Освой техники цепочек промптов, few-shot обучения, эмоционального инжиниринга и других продвинутых методов.'
+                    ],
+                    'en-US': [
+                        'A well-crafted prompt is 90% of success in working with neural networks. Here are the key principles:',
+                        'Study methods for safely testing the boundaries of neural network capabilities. Learn how AI limitations work.',
+                        'Master techniques of prompt chains, few-shot learning, emotional engineering and other advanced methods.'
+                    ],
+                    'default': [
+                        'A well-crafted prompt is 90% of success in working with neural networks. Here are the key principles:',
+                        'Study methods for safely testing the boundaries of neural network capabilities. Learn how AI limitations work.',
+                        'Master techniques of prompt chains, few-shot learning, emotional engineering and other advanced methods.'
+                    ]
+                };
+                
+                const stepLists = {
+                    'ru-RU': [
+                        [
+                            'Чётко формулируй задачу — нейросеть не читает мысли',
+                            'Используй контекст — чем больше релевантной информации, тем лучше результат',
+                            'Задавай структуру ответа — так AI будет понимать, что именно ты ждёшь',
+                            'Итеративный подход — уточняй запросы на основе предыдущих ответов'
+                        ],
+                        [
+                            'Метод DAN — постепенное раскрытие темы',
+                            'Ролевое моделирование — присвоение AI специфической роли',
+                            'Контекстуальное программирование — использование специфического контекста',
+                            'Эмоциональный инжиниринг — воздействие на эмоциональный отклик модели'
+                        ],
+                        [
+                            'Цепочки промптов (Prompt Chaining) — разбиение сложной задачи на этапы',
+                            'Few-shot learning — предоставление примеров для обучения модели',
+                            'Эмоциональный инжиниринг — использование эмоциональных триггеров',
+                            'Стилистическое программирование — задание стиля ответа'
+                        ]
+                    ],
+                    'en-US': [
+                        [
+                            'Clearly formulate the task - the neural network does not read minds',
+                            'Use context - the more relevant information, the better the result',
+                            'Set the answer structure - this way AI will understand what exactly you expect',
+                            'Iterative approach - clarify queries based on previous answers'
+                        ],
+                        [
+                            'The DAN method - gradual disclosure of the topic',
+                            'Role modeling - assigning a specific role to AI',
+                            'Contextual programming - using specific context',
+                            'Emotional engineering - influencing the emotional response of the model'
+                        ],
+                        [
+                            'Prompt Chaining - breaking down a complex task into stages',
+                            'Few-shot learning - providing examples for model training',
+                            'Emotional engineering - using emotional triggers',
+                            'Stylistic programming - setting the response style'
+                        ]
+                    ],
+                    'default': [
+                        [
+                            'Clearly formulate the task - the neural network does not read minds',
+                            'Use context - the more relevant information, the better the result',
+                            'Set the answer structure - this way AI will understand what exactly you expect',
+                            'Iterative approach - clarify queries based on previous answers'
+                        ],
+                        [
+                            'The DAN method - gradual disclosure of the topic',
+                            'Role modeling - assigning a specific role to AI',
+                            'Contextual programming - using specific context',
+                            'Emotional engineering - influencing the emotional response of the model'
+                        ],
+                        [
+                            'Prompt Chaining - breaking down a complex task into stages',
+                            'Few-shot learning - providing examples for model training',
+                            'Emotional engineering - using emotional triggers',
+                            'Stylistic programming - setting the response style'
+                        ]
+                    ]
+                };
+                
+                const titles = stepTitles[lang] || stepTitles['default'];
+                const texts = stepTexts[lang] || stepTexts['default'];
+                const lists = stepLists[lang] || stepLists['default'];
+                
+                document.getElementById('detail-title').textContent = titles[currentStep - 1];
+                document.getElementById('detail-text').textContent = texts[currentStep - 1];
                 
                 const listItems = document.querySelectorAll('#detail-list li');
-                stepLists[currentStep - 1].forEach((item, index) => {
+                lists[currentStep - 1].forEach((item, index) => {
                     if (listItems[index]) {
                         listItems[index].textContent = item;
                     }
