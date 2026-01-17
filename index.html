@@ -835,42 +835,45 @@ document.addEventListener('mouseover', function(e) {
         
         // ========== МУЛЬТИЯЗЫЧНОСТЬ ==========
         
-        // Список поддерживаемых языков
-        const languages = {
-            'ru-RU': { name: 'Russian', native: 'Русский' },
-            'be-BY': { name: 'Belarusian', native: 'Беларуская' },
-            'uk-UA': { name: 'Ukrainian', native: 'Українська' },
-            'kk-KZ': { name: 'Kazakh', native: 'Қазақша' },
-            'zh-Hant': { name: 'Traditional Chinese', native: '中文(繁體)' },
-            'ko-KR': { name: 'Korean', native: '한국어' },
-            'ja-JP': { name: 'Japanese', native: '日本語' },
-            'ar-EG': { name: 'Arabic', native: 'العربية' },
-            'fa-IR': { name: 'Persian', native: 'فارسی' },
-            'ur-PK': { name: 'Urdu', native: 'اردو' },
-            'it-IT': { name: 'Italian', native: 'Italiano' },
-            'pt-BR': { name: 'Portuguese (BR)', native: 'Português (BR)' },
-            'fr-FR': { name: 'French', native: 'Français' },
-            'es-419': { name: 'Spanish (LATAM)', native: 'Español (LATAM)' },
-            'ro-RO': { name: 'Romanian', native: 'Română' },
-            'hu-HU': { name: 'Hungarian', native: 'Magyar' },
-            'bg-BG': { name: 'Bulgarian', native: 'Български' },
-            'el-GR': { name: 'Greek', native: 'Ελληνικά' },
-            'en-US': { name: 'English', native: 'English' },
-            'de-DE': { name: 'German', native: 'Deutsch' },
-            'pl-PL': { name: 'Polish', native: 'Polski' },
-            'nl-NL': { name: 'Dutch', native: 'Nederlands' },
-            'hi-IN': { name: 'Hindi', native: 'हिन्दी' },
-            'id-ID': { name: 'Indonesian', native: 'Bahasa Indonesia' },
-            'th-TH': { name: 'Thai', native: 'ไทย' },
-            'tr-TR': { name: 'Turkish', native: 'Türkçe' },
-            'uz-UZ': { name: 'Uzbek', native: 'Oʻzbekcha' },
-            'he-IL': { name: 'Hebrew', native: 'עברית' },
-            'sr-RS': { name: 'Serbian', native: 'Српски' },
-            'my-MM': { name: 'Myanmar', native: 'မြန်မာစာ' },
-            'bn-BD': { name: 'Bengali', native: 'বাংলা' },
-            'niu-NU': { name: 'Niuean', native: 'Niuē' },
-            'sv-SE': { name: 'Swedish', native: 'Svenska' }
-        };
+// ========== ОТСОРТИРОВАННЫЙ СПИСОК ЯЗЫКОВ ПО АЛФАВИТУ ==========
+const languages = {
+    'ar-EG': { name: 'Arabic', native: 'العربية' },
+    'be-BY': { name: 'Belarusian', native: 'Беларуская' },
+    'bg-BG': { name: 'Bulgarian', native: 'Български' },
+    'bn-BD': { name: 'Bengali', native: 'বাংলা' },
+    'da-DK': { name: 'Danish', native: 'Dansk' },
+    'de-DE': { name: 'German', native: 'Deutsch' },
+    'el-GR': { name: 'Greek', native: 'Ελληνικά' },
+    'en-US': { name: 'English', native: 'English' },
+    'es-419': { name: 'Spanish (LATAM)', native: 'Español (LATAM)' },
+    'fa-IR': { name: 'Persian', native: 'فارسی' },
+    'fi-FI': { name: 'Finnish', native: 'Suomi' },
+    'fr-FR': { name: 'French', native: 'Français' },
+    'he-IL': { name: 'Hebrew', native: 'עברית' },
+    'hi-IN': { name: 'Hindi', native: 'हिन्दी' },
+    'hu-HU': { name: 'Hungarian', native: 'Magyar' },
+    'id-ID': { name: 'Indonesian', native: 'Bahasa Indonesia' },
+    'it-IT': { name: 'Italian', native: 'Italiano' },
+    'ja-JP': { name: 'Japanese', native: '日本語' },
+    'kk-KZ': { name: 'Kazakh', native: 'Қазақша' },
+    'ko-KR': { name: 'Korean', native: '한국어' },
+    'my-MM': { name: 'Myanmar', native: 'မြန်မာစာ' },
+    'nb-NO': { name: 'Norwegian', native: 'Norsk' },
+    'nl-NL': { name: 'Dutch', native: 'Nederlands' },
+    'niu-NU': { name: 'Niuean', native: 'Niuē' },
+    'pl-PL': { name: 'Polish', native: 'Polski' },
+    'pt-BR': { name: 'Portuguese (BR)', native: 'Português (BR)' },
+    'ro-RO': { name: 'Romanian', native: 'Română' },
+    'ru-RU': { name: 'Russian', native: 'Русский' },
+    'sr-RS': { name: 'Serbian', native: 'Српски' },
+    'sv-SE': { name: 'Swedish', native: 'Svenska' },
+    'th-TH': { name: 'Thai', native: 'ไทย' },
+    'tr-TR': { name: 'Turkish', native: 'Türkçe' },
+    'uk-UA': { name: 'Ukrainian', native: 'Українська' },
+    'ur-PK': { name: 'Urdu', native: 'اردو' },
+    'uz-UZ': { name: 'Uzbek', native: 'Oʻzbekcha' },
+    'zh-Hant': { name: 'Traditional Chinese', native: '中文(繁體)' }
+};
         
 // ========== ПОЛНЫЙ БЛОК ПЕРЕВОДОВ ДЛЯ ВСЕХ ЯЗЫКОВ ==========
 const translations = {
@@ -2161,7 +2164,131 @@ const translations = {
         'contact-text': 'För samarbete och förslag: nenormikchel@gmail.com', // ← ИСПРАВИЛ НА ТВОЙ EMAIL
         'theme-text': 'Mörkt',
         'lang-name': 'Svenska'
-    } // ← ЗДЕСЬ НЕТ ЗАПЯТОЙ, ЭТО ПОСЛЕДНИЙ ЭЛЕМЕНТ
+    },
+
+    // ДАТСКИЙ (DA-DK)
+    'da-DK': {
+        'hero-title': 'Jailbreak-guide til Neurale Netværk',
+        'hero-subtitle': 'Komplet guide til at omgå begrænsninger, prompt-engineering og maksimering af AI-modeller. Uddannelsesindhold til at lære neurale netværks muligheder.',
+        'start-btn-text': 'Start Læring',
+        'guide-title': 'Komplet Guide til Neurale Netværk',
+        'card1-title': 'Grundlæggende Prompt-Engineering',
+        'card1-text': 'Lær grundlæggende teknikker til at oprette prompts til neurale netværk. Opdag hvordan man korrekt formulerer forespørgsler for at få nøjagtige og relevante svar fra AI-modeller.',
+        'card2-title': 'Omgå Begrænsninger (Jailbreak)',
+        'card2-text': 'Studer metoder til sikkert at teste grænserne for neurale netværks evner. Lær hvordan AI-begrænsninger fungerer og hvilke tilgange der bruges til at udvide funktionalitet.',
+        'card3-title': 'Avancerede Teknikker',
+        'card3-text': 'Mestr teknikker til prompt-kæder, few-shot læring, følelsesmæssig engineering og andre avancerede metoder til interaktion med neurale netværk.',
+        'detail-title': 'Trin 1: Grundlæggende Interaktion med Neurale Netværk',
+        'detail-text': 'En velformuleret prompt er 90% af succes i arbejde med neurale netværk. Her er nøgleprincipperne:',
+        'detail-list': [
+            'Formuler opgaven klart – det neurale netværk læser ikke tanker',
+            'Brug kontekst – jo mere relevant information, desto bedre resultat',
+            'Indstil svarsstruktur – på denne måde vil AI forstå præcis hvad du forventer',
+            'Iterativ tilgang – afklare forespørgsler baseret på tidligere svar'
+        ],
+        'example-title': 'Eksempel på effektiv prompt:',
+        'prev-text': 'Tilbage',
+        'next-text': 'Næste',
+        'resources-title': 'Yderligere Ressourcer',
+        'resources-text': 'Til dybdegående studier af neurale netværk og prompt-engineering anbefaler vi:',
+        'resources-list': [
+            'OpenAI officiel dokumentation',
+            'Maskinlæringskurser på Coursera',
+            'Prompt-engineering fællesskaber på GitHub',
+            'Videnskabelige artikler om AI-brugsetik'
+        ],
+        'about-title': 'Om Projektet',
+        'about-text': 'Et uddannelsesprojekt dedikeret til at studere neurale netværks muligheder og prompt-engineering. Målet er at levere kvalitetsmaterialer til sikker og effektiv interaktion med AI.',
+        'legal-title': 'Juridisk Information',
+        'legal-text': 'Indhold leveres kun til uddannelsesformål. Forfatteren er ikke ansvarlig for brug af information i strid med AI-service regler.',
+        'contact-title': 'Kontakter',
+        'contact-text': 'For samarbejde og forslag: contact@neuro-guide.example.com',
+        'theme-text': 'Mørk',
+        'lang-name': 'Dansk'
+    },
+
+// НОРВЕЖСКИЙ (NB-NO)
+    'nb-NO': {
+        'hero-title': 'Jailbreak-guide for Nevrale Nettverk',
+        'hero-subtitle': 'Komplett guide for å omgå begrensninger, prompt-engineering og maksimering av AI-modeller. Utdanningsinnhold for å lære nevrale nettverks muligheter.',
+        'start-btn-text': 'Start Læring',
+        'guide-title': 'Komplett Guide for Nevrale Nettverk',
+        'card1-title': 'Grunnleggende Prompt-Engineering',
+        'card1-text': 'Lær grunnleggende teknikker for å opprette prompts for nevrale nettverk. Oppdag hvordan man korrekt formulerer spørringer for å få nøyaktige og relevante svar fra AI-modeller.',
+        'card2-title': 'Omgå Begrensninger (Jailbreak)',
+        'card2-text': 'Studer metoder for sikkert å teste grensene for nevrale nettverks evner. Lær hvordan AI-begrensninger fungerer og hvilke tilnærminger som brukes for å utvide funksjonalitet.',
+        'card3-title': 'Avanserte Teknikker',
+        'card3-text': 'Mestr teknikker for prompt-kjeder, few-shot læring, følelsesmessig engineering og andre avanserte metoder for interaksjon med nevrale nettverk.',
+        'detail-title': 'Trinn 1: Grunnleggende Interaksjon med Nevrale Nettverk',
+        'detail-text': 'En velformulert prompt er 90% av suksess i arbeid med nevrale nettverk. Her er hovedprinsippene:',
+        'detail-list': [
+        'Formuler oppgaven klart – det nevrale nettverket leser ikke tanker',
+        'Bruk kontekst – jo mer relevant informasjon, desto bedre resultat',
+        'Sett opp svarstruktur – på denne måten vil AI forstå nøyaktig hva du forventer',
+        'Iterativ tilnærming – avklare spørringer basert på tidligere svar'
+        ],
+        'example-title': 'Eksempel på effektiv prompt:',
+        'prev-text': 'Tilbake',
+        'next-text': 'Neste',
+        'resources-title': 'Ytterligere Ressurser',
+        'resources-text': 'For dyptgående studier av nevrale nettverk og prompt-engineering anbefaler vi:',
+        'resources-list': [
+            'OpenAI offisiell dokumentasjon',
+            'Maskinlæringskurs på Coursera',
+            'Prompt-engineering fellesskap på GitHub',
+            'Vitenskapelige artikler om AI-bruk etikk'
+        ],
+        'about-title': 'Om Prosjektet',
+        'about-text': 'Et utdanningsprosjekt dedikert til å studere nevrale nettverks muligheter og prompt-engineering. Målet er å levere kvalitetsmaterialer for sikker og effektiv interaksjon med AI.',
+        'legal-title': 'Juridisk Informasjon',
+        'legal-text': 'Innhold leveres kun for utdanningsformål. Forfatteren er ikke ansvarlig for bruk av informasjon i strid med AI-tjeneste regler.',
+        'contact-title': 'Kontakter',
+        'contact-text': 'For samarbeid og forslag: contact@neuro-guide.example.com',
+        'theme-text': 'Mørk',
+        'lang-name': 'Norsk'
+    },
+
+// ФИНСКИЙ (FI-FI)
+    'fi-FI': {
+        'hero-title': 'Jailbreak-opas Neuroverkkoihin',
+        'hero-subtitle': 'Täydellinen opas rajoituksen kiertämiseen, prompt-engineeringiin ja AI-mallien maksimointiin. Koulutussisältö neuroverkkojen mahdollisuuksien oppimiseen.',
+        'start-btn-text': 'Aloita Oppiminen',
+        'guide-title': 'Täydellinen Neuroverkko-opas',
+        'card1-title': 'Prompt-Engineeringin Perusteet',
+        'card1-text': 'Opi perustekniikat prompttien luomiseen neuroverkoille. Selvitä kuinka kyselyt muotoillaan oikein saadaksesi tarkkoja ja asiaankuuluvia vastauksia AI-malleista.',
+        'card2-title': 'Rajoitusten Kiertäminen (Jailbreak)',
+        'card2-text': 'Tutki menetelmiä neuroverkkojen kykyjen rajojen turvalliseen testaamiseen. Opi kuinka AI-rajoitukset toimivat ja mitä lähestymistapoja käytetään toiminnallisuuden laajentamiseen.',
+        'card3-title': 'Edistyneet Tekniikat',
+        'card3-text': 'Hallitse prompttiketjujen, few-shot-oppimisen, emotionaalisen engineeringin ja muiden edistyneiden menetelmien tekniikat neuroverkkojen vuorovaikutukseen.',
+        'detail-title': 'Vaihe 1: Neuroverkkojen Vuorovaikutuksen Perusteet',
+        'detail-text': 'Hyvin muotoiltu promptti on 90% menestyksestä työskennellessä neuroverkkojen kanssa. Tässä ovat avainperiaatteet:',
+        'detail-list': [
+            'Muotoile tehtävä selvästi – neuroverkko ei lue ajatuksia',
+            'Käytä kontekstia – mitä enemmän asiaankuuluvaa tietoa, sen parempi tulos',
+            'Aseta vastausrakenne – tällä tavalla AI ymmärtää tarkalleen mitä odotat',
+            'Iteratiivinen lähestymistapa – selvennä kyselyitä aiempiin vastauksiin perustuen'
+        ],
+        'example-title': 'Esimerkki tehokkaasta promptista:',
+        'prev-text': 'Takaisin',
+        'next-text': 'Seuraava',
+        'resources-title': 'Lisäresurssit',
+        'resources-text': 'Neuroverkkojen ja prompt-engineeringin syväopiskeluun suosittelemme:',
+        'resources-list': [
+            'OpenAI:n virallinen dokumentaatio',
+            'Koneoppimiskurssit Courserassa',
+            'Prompt-engineering-yhteisöt GitHubissa',
+            'Tieteelliset artikkelit AI-käytön etiikasta'
+        ],
+        'about-title': 'Tietoja Projektista',
+        'about-text': 'Koulutusprojekti, joka on omistettu neuroverkkojen mahdollisuuksien ja prompt-engineeringin tutkimiseen. Tavoitteena on tarjota laadukkaita materiaaleja turvalliseen ja tehokkaaseen vuorovaikutukseen AI:n kanssa.',
+        'legal-title': 'Oikeudelliset Tiedot',
+        'legal-text': 'Sisältö toimitetaan vain koulutustarkoituksiin. Kirjoittaja ei ole vastuussa tiedon käytöstä AI-palvelusääntöjen vastaisesti.',
+        'contact-title': 'Yhteystiedot',
+        'contact-text': 'Yhteistyöhön ja ehdotuksiin: contact@neuro-guide.example.com',
+        'theme-text': 'Tumma',
+        'lang-name': 'Suomi'
+    },
+
 }; // ← КОНЕЦ ОБЪЕКТА translations
         
         // Инициализация языкового меню
