@@ -694,9 +694,198 @@ svg:hover[title] {
                 <p>© 2026 Neuro Guide. Все права защищены. Контент защищен от копирования.</p>
             </div>
         </div>
+
+        <!-- Контактная форма -->
+<div class="card" style="margin-bottom: 40px;" id="contact-form-section">
+    <h3 id="form-title">Связаться с нами</h3>
+    <p id="form-subtitle">Задайте вопрос или оставьте предложение по улучшению гайда</p>
+    
+    <form id="static-contact-form">
+        <div style="margin-bottom: 15px;">
+            <label for="user-name" style="display: block; margin-bottom: 5px;">Ваше имя</label>
+            <input type="text" id="user-name" name="name" required 
+                   style="width: 100%; padding: 10px; border-radius: 6px; 
+                          border: 1px solid var(--border-color); 
+                          background-color: var(--bg-color); 
+                          color: var(--text-color);">
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="user-email" style="display: block; margin-bottom: 5px;">Email для ответа</label>
+            <input type="email" id="user-email" name="email" required 
+                   style="width: 100%; padding: 10px; border-radius: 6px; 
+                          border: 1px solid var(--border-color); 
+                          background-color: var(--bg-color); 
+                          color: var(--text-color);">
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label for="message-type" style="display: block; margin-bottom: 5px;">Тип сообщения</label>
+            <select id="message-type" name="type" 
+                    style="width: 100%; padding: 10px; border-radius: 6px; 
+                           border: 1px solid var(--border-color); 
+                           background-color: var(--bg-color); 
+                           color: var(--text-color);">
+                <option value="question">Вопрос по нейросетям</option>
+                <option value="suggestion">Предложение по улучшению</option>
+                <option value="cooperation">Сотрудничество</option>
+                <option value="other">Другое</option>
+            </select>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label for="user-message" style="display: block; margin-bottom: 5px;">Сообщение</label>
+            <textarea id="user-message" name="message" rows="5" required 
+                      style="width: 100%; padding: 10px; border-radius: 6px; 
+                             border: 1px solid var(--border-color); 
+                             background-color: var(--bg-color); 
+                             color: var(--text-color); 
+                             font-family: 'Inter', sans-serif;"></textarea>
+        </div>
+        
+        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+            <button type="submit" class="btn btn-primary" id="submit-form-btn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M2.5 5.8335L9.0755 11.0502C9.63533 11.5418 10.3647 11.5418 10.9245 11.0502L17.5 5.8335M4.16667 15.8335H15.8333C16.7538 15.8335 17.5 15.0873 17.5 14.1668V5.8335C17.5 4.91302 16.7538 4.16683 15.8333 4.16683H4.16667C3.24619 4.16683 2.5 4.91302 2.5 5.8335V14.1668C2.5 15.0873 3.24619 15.8335 4.16667 15.8335Z" 
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span id="submit-btn-text">Отправить сообщение</span>
+            </button>
+            
+            <button type="button" class="btn" id="open-mail-btn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M16.6667 7.0835L11.825 10.8585C10.975 11.5168 9.85833 11.5168 9.00833 10.8585L4.16667 7.0835M5 15.8335H15C16.3807 15.8335 17.5 14.7142 17.5 13.3335V6.66683C17.5 5.28616 16.3807 4.16683 15 4.16683H5C3.61929 4.16683 2.5 5.28616 2.5 6.66683V13.3335C2.5 14.7142 3.61929 15.8335 5 15.8335Z" 
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span id="mail-btn-text">Написать на email</span>
+            </button>
+        </div>
+        
+        <div id="form-message" style="margin-top: 15px; display: none; padding: 10px; border-radius: 6px;"></div>
+    </form>
+    
+    <div style="margin-top: 20px; padding: 15px; background-color: var(--secondary-color); border-radius: 6px;">
+        <p style="margin: 0; font-size: 0.9rem; color: var(--text-color); opacity: 0.8;">
+            <strong>Примечание:</strong> Это статическая форма. Сообщение будет открыто в вашем почтовом клиенте для ручной отправки.
+        </p>
+    </div>
+</div>
     </footer>
 
     <script>
+    // ========== КОНТАКТНАЯ ФОРМА ==========
+
+function initContactForm() {
+    const form = document.getElementById('static-contact-form');
+    const formMessage = document.getElementById('form-message');
+    const openMailBtn = document.getElementById('open-mail-btn');
+    
+    // Обработка отправки формы
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('user-name').value.trim();
+            const email = document.getElementById('user-email').value.trim();
+            const type = document.getElementById('message-type').value;
+            const message = document.getElementById('user-message').value.trim();
+            
+            // Проверка заполнения полей
+            if (!name || !email || !message) {
+                showFormMessage('form-error', 'error');
+                return;
+            }
+            
+            // Создание письма
+            const subject = getEmailSubject(type, name);
+            const body = createEmailBody(name, email, type, message);
+            
+            // Открытие почтового клиента
+            openEmailClient(email, subject, body);
+            
+            // Показ сообщения об успехе
+            showFormMessage('form-success', 'success');
+            
+            // Очистка формы
+            form.reset();
+        });
+    }
+    
+    // Кнопка "Написать на email" (просто открывает почту)
+    if (openMailBtn) {
+        openMailBtn.addEventListener('click', function() {
+            const subject = getEmailSubject('other', 'Посетитель сайта');
+            const body = "Здравствуйте!\n\nЯ пишу с вашего сайта про нейросети.\n\n";
+            openEmailClient('nenormikchel@gmail.com', subject, body);
+        });
+    }
+    
+    function getEmailSubject(type, name) {
+        const typeText = {
+            'question': 'Вопрос по нейросетям',
+            'suggestion': 'Предложение по улучшению',
+            'cooperation': 'Предложение о сотрудничестве',
+            'other': 'Сообщение с сайта'
+        };
+        return `${typeText[type]} от ${name}`;
+    }
+    
+    function createEmailBody(name, email, type, message) {
+        const typeText = {
+            'question': 'Вопрос по нейросетям',
+            'suggestion': 'Предложение по улучшению',
+            'cooperation': 'Предложение о сотрудничестве',
+            'other': 'Другое'
+        };
+        
+        return `Здравствуйте!
+
+Информация об отправителе:
+Имя: ${name}
+Email: ${email}
+Тип обращения: ${typeText[type]}
+
+Сообщение:
+${message}
+
+---
+Отправлено с сайта Neuro-Guide`;
+    }
+    
+    function openEmailClient(to, subject, body) {
+        const encodedSubject = encodeURIComponent(subject);
+        const encodedBody = encodeURIComponent(body);
+        window.location.href = `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
+    }
+    
+    function showFormMessage(messageKey, type) {
+        if (!formMessage) return;
+        
+        // Получаем перевод сообщения
+        const lang = document.getElementById('main-html').getAttribute('lang');
+        const translations = window.translations || {};
+        const langTranslations = translations[lang] || translations['ru-RU'];
+        const messageText = langTranslations[messageKey] || messageKey;
+        
+        formMessage.textContent = messageText;
+        formMessage.style.display = 'block';
+        formMessage.style.backgroundColor = type === 'success' ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)';
+        formMessage.style.color = type === 'success' ? '#10b981' : '#ef4444';
+        formMessage.style.borderLeft = `4px solid ${type === 'success' ? '#10b981' : '#ef4444'}`;
+        
+        // Автоскрытие через 5 секунд
+        setTimeout(() => {
+            formMessage.style.display = 'none';
+        }, 5000);
+    }
+}
+
+// Инициализация формы при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    // ... ваш существующий код ...
+    initContactForm();
+    // ... ваш существующий код ...
+});
         // ========== БЛОКИРОВКА ДЕЙСТВИЙ ПОЛЬЗОВАТЕЛЯ ==========
 
 // ========== УБИРАЕМ ВСЕ ТУЛТИПЫ НАХУЙ ==========
@@ -915,6 +1104,13 @@ const translations = {
         'legal-text': 'Контент предоставляется исключительно в образовательных целях. Автор не несет ответственности за использование информации в нарушение правил AI-сервисов.',
         'contact-title': 'Контакты',
         'contact-text': 'По вопросам сотрудничества и предложениям: nenormikchel@gmail.com',
+        'form-title': 'Связаться с нами',
+        'form-subtitle': 'Задайте вопрос или оставьте предложение по улучшению гайда',
+        'submit-btn-text': 'Отправить сообщение',
+        'mail-btn-text': 'Написать на email',
+        'form-success': '✅ Сообщение готово! Откроется ваш почтовый клиент. Просто нажмите "Отправить".',
+        'form-error': '⚠️ Заполните все поля формы.',
+        'email-subject': 'Вопрос по нейросетям от ',
         'theme-text': 'Тёмная',
         'lang-name': 'Русский'
     },
@@ -954,6 +1150,13 @@ const translations = {
         'legal-text': 'Кантэнт прадастаўляецца выключна ў адукацыйных мэтах. Аўтар нясе адказнасць за выкарыстанне інфармацыі ў парушэнне правілаў AI-сэрвісаў.',
         'contact-title': 'Кантакты',
         'contact-text': 'Па пытаннях супрацоўніцтва і прапановаў: nenormikchel@gmail.com',
+        'form-title': 'Звязацца з намі',
+        'form-subtitle': 'Задайце пытанне або пакіньце прапанову па паляпшэнні даведніка',
+        'submit-btn-text': 'Адправіць паведамленне',
+        'mail-btn-text': 'Напісаць на email',
+        'form-success': '✅ Паведамленне гатова! Адкрыецца ваш паштовы кліент. Проста націсніце "Адправіць".',
+        'form-error': '⚠️ Запоўніце ўсе палі формы.',
+        'email-subject': 'Пытанне па нейрасецям ад ',
         'theme-text': 'Цёмная',
         'lang-name': 'Беларуская'
     },
@@ -993,6 +1196,13 @@ const translations = {
         'legal-text': 'Контент надається виключно в освітніх цілях. Автор не несе відповідальності за використання інформації в порушення правил AI-сервісів.',
         'contact-title': 'Контакти',
         'contact-text': 'З питань співпраці та пропозицій: nenormikchel@gmail.com',
+        'form-title': "Зв'язатися з нами",
+        'form-subtitle': 'Задайте питання або залиште пропозицію щодо покращення посібника',
+        'submit-btn-text': 'Надіслати повідомлення',
+        'mail-btn-text': 'Написати на email',
+        'form-success': '✅ Повідомлення готове! Відкриється ваш поштовий клієнт. Просто натисніть "Надіслати".',
+        'form-error': '⚠️ Заповніть усі поля форми.',
+        'email-subject': 'Питання щодо нейромереж від ',
         'theme-text': 'Темна',
         'lang-name': 'Українська'
     },
@@ -1032,6 +1242,13 @@ const translations = {
         'legal-text': 'Контент тек білім беру мақсаттарында ұсынылады. Автор AI-сервистердің ережелерін бұзудағы ақпаратты пайдалану үшін жауапкершілік тартпайды.',
         'contact-title': 'Байланыс',
         'contact-text': 'Ынтымақтастық және ұсыныстар бойынша: nenormikchel@gmail.com',
+        'form-title': 'Бізбен байланысу',
+        'form-subtitle': 'Сұрақ қойыңыз немесе нұсқаулықты жақсарту бойынша ұсыныс қалдырыңыз',
+        'submit-btn-text': 'Хабарлама жіберу',
+        'mail-btn-text': 'Email-ге жазу',
+        'form-success': '✅ Хабарлама дайын! Сіздің пошта клиентіңіз ашылады. Тек "Жіберу" түймесін басыңыз.',
+        'form-error': '⚠️ Форманың барлық өрістерін толтырыңыз.',
+        'email-subject': 'Нейроторғандар туралы сұрақ ',
         'theme-text': 'Қараңғы',
         'lang-name': 'Қазақша'
     },
@@ -1071,6 +1288,13 @@ const translations = {
         'legal-text': '內容僅用於教育目的。作者不對違反AI服務規則使用信息負責。',
         'contact-title': '聯繫方式',
         'contact-text': '合作和建議請聯繫：nenormikchel@gmail.com',
+        'form-title': '聯繫我們',
+        'form-subtitle': '提出問題或留下改進指南的建議',
+        'submit-btn-text': '發送訊息',
+        'mail-btn-text': '寫信到電子郵件',
+        'form-success': '✅ 訊息已準備好！將打開您的郵件客戶端。只需點擊"發送"。',
+        'form-error': '⚠️ 請填寫表單的所有字段。',
+        'email-subject': '關於神經網絡的問題，來自 ',
         'theme-text': '深色',
         'lang-name': '中文(繁體)'
     },
@@ -1110,6 +1334,13 @@ const translations = {
         'legal-text': '콘텐츠는 교육 목적으로만 제공됩니다. 작성자는 AI 서비스 규칙 위반 정보 사용에 대해 책임을 지지 않습니다.',
         'contact-title': '연락처',
         'contact-text': '협업 및 제안 사항: nenormikchel@gmail.com',
+        'form-title': '문의하기',
+        'form-subtitle': '질문을 하거나 가이드 개선 제안을 남겨주세요',
+        'submit-btn-text': '메시지 보내기',
+        'mail-btn-text': '이메일로 작성',
+        'form-success': '✅ 메시지가 준비되었습니다! 메일 클라이언트가 열립니다. "보내기"를 클릭하세요.',
+        'form-error': '⚠️ 양식의 모든 필드를 작성하세요.',
+        'email-subject': '신경망에 관한 질문, 보낸사람: ',
         'theme-text': '어두운',
         'lang-name': '한국어'
     },
@@ -1149,6 +1380,13 @@ const translations = {
         'legal-text': 'コンテンツは教育目的でのみ提供されます。著者はAIサービス規則違反の情報使用について責任を負いません。',
         'contact-title': '連絡先',
         'contact-text': '協力と提案について：nenormikchel@gmail.com',
+        'form-title': 'お問い合わせ',
+        'form-subtitle': '質問をするか、ガイドの改善提案を残してください',
+        'submit-btn-text': 'メッセージを送信',
+        'mail-btn-text': 'メールで書く',
+        'form-success': '✅ メッセージが準備できました！メールクライアントが開きます。「送信」をクリックしてください。',
+        'form-error': '⚠️ フォームのすべてのフィールドを入力してください。',
+        'email-subject': 'ニューラルネットワークに関する質問、差出人: ',
         'theme-text': 'ダーク',
         'lang-name': '日本語'
     },
@@ -1188,6 +1426,13 @@ const translations = {
         'legal-text': 'يتم تقديم المحتوى لأغراض تعليمية فقط. لا يتحمل المؤلف المسؤولية عن استخدام المعلومات المخالف لقواعد خدمات الذكاء الاصطناعي.',
         'contact-title': 'جهات الاتصال',
         'contact-text': 'للاستفسارات التعاونية والاقتراحات: nenormikchel@gmail.com',
+        'form-title': 'اتصل بنا',
+        'form-subtitle': 'اطرح سؤالاً أو اترك اقتراحاً لتحسين الدليل',
+        'submit-btn-text': 'إرسال الرسالة',
+        'mail-btn-text': 'الكتابة إلى البريد الإلكتروني',
+        'form-success': '✅ الرسالة جاهزة! سيتم فتح عميل البريد الخاص بك. فقط انقر على "إرسال".',
+        'form-error': '⚠️ يرجى ملء جميع حقول النموذج.',
+        'email-subject': 'سؤال حول الشبكات العصبية من ',
         'theme-text': 'داكن',
         'lang-name': 'العربية'
     },
@@ -1227,6 +1472,13 @@ const translations = {
         'legal-text': 'محتوا صرفاً برای اهداف آموزشی ارائه می‌شود. نویسنده مسئولیت استفاده از اطلاعات در نقض قوانین خدمات AI را بر عهده نمی‌گیرد.',
         'contact-title': 'تماس',
         'contact-text': 'برای همکاری و پیشنهادات: nenormikchel@gmail.com',
+        'form-title': 'تماس با ما',
+        'form-subtitle': 'سوالی بپرسید یا پیشنهادی برای بهبود راهنما بگذارید',
+        'submit-btn-text': 'ارسال پیام',
+        'mail-btn-text': 'نوشتن به ایمیل',
+        'form-success': '✅ پیام آماده است! کلاینت ایمیل شما باز خواهد شد. فقط روی "ارسال" کلیک کنید.',
+        'form-error': '⚠️ لطفاً تمام فیلدهای فرم را پر کنید.',
+        'email-subject': 'سوال درباره شبکه های عصبی از ',
         'theme-text': 'تیره',
         'lang-name': 'فارسی'
     },
@@ -1266,6 +1518,13 @@ const translations = {
         'legal-text': 'مواد صرف تعلیمی مقاصد کے لیے فراہم کی جاتی ہے۔ مصنف AI خدمات کے قواعد کی خلاف ورزی میں معلومات کے استعمال کے لیے ذمہ دار نہیں ہے۔',
         'contact-title': 'رابطے',
         'contact-text': 'تعاون اور تجاویز کے لیے: nenormikchel@gmail.com',
+        'form-title': 'ہم سے رابطہ کریں',
+        'form-subtitle': 'سوال پوچھیں یا گائیڈ کو بہتر بنانے کا مشورہ دیں',
+        'submit-btn-text': 'پیغام بھیجیں',
+        'mail-btn-text': 'ای میل پر لکھیں',
+        'form-success': '✅ پیغام تیار ہے! آپ کا ای میل کلائنٹ کھل جائے گا۔ بس "بھیجیں" پر کلک کریں۔',
+        'form-error': '⚠️ براہ کرم فارم کے تمام فیلڈز بھریں۔',
+        'email-subject': 'نیورل نیٹ ورکس کے بارے میں سوال از ',
         'theme-text': 'سیاہ',
         'lang-name': 'اردو'
     },
@@ -1305,6 +1564,13 @@ const translations = {
         'legal-text': 'I contenuti sono forniti solo a scopo educativo. L\'autore non è responsabile per l\'uso delle informazioni in violazione delle regole dei servizi AI.',
         'contact-title': 'Contatti',
         'contact-text': 'Per collaborazioni e suggerimenti: nenormikchel@gmail.com',
+        'form-title': 'Contattaci',
+        'form-subtitle': 'Fai una domanda o lascia un suggerimento per migliorare la guida',
+        'submit-btn-text': 'Invia messaggio',
+        'mail-btn-text': 'Scrivere via email',
+        'form-success': '✅ Messaggio pronto! Si aprirà il tuo client di posta. Basta cliccare "Invia".',
+        'form-error': '⚠️ Compila tutti i campi del modulo.',
+        'email-subject': 'Domanda sulle reti neurali da ',
         'theme-text': 'Scuro',
         'lang-name': 'Italiano'
     },
@@ -1344,6 +1610,13 @@ const translations = {
         'legal-text': 'O conteúdo é fornecido apenas para fins educacionais. O autor não se responsabiliza pelo uso de informações em violação das regras dos serviços de IA.',
         'contact-title': 'Contatos',
         'contact-text': 'Para colaboração e sugestões: nenormikchel@gmail.com',
+        'form-title': 'Entre em Contato',
+        'form-subtitle': 'Faça uma pergunta ou deixe uma sugestão para melhorar o guia',
+        'submit-btn-text': 'Enviar mensagem',
+        'mail-btn-text': 'Escrever por email',
+        'form-success': '✅ Mensagem pronta! Seu cliente de email será aberto. Basta clicar em "Enviar".',
+        'form-error': '⚠️ Preencha todos os campos do formulário.',
+        'email-subject': 'Pergunta sobre redes neurais de ',
         'theme-text': 'Escuro',
         'lang-name': 'Português (BR)'
     },
@@ -1383,6 +1656,13 @@ const translations = {
         'legal-text': 'Le contenu est fourni à des fins éducatives uniquement. L\'auteur n\'est pas responsable de l\'utilisation des informations en violation des règles des services d\'IA.',
         'contact-title': 'Contacts',
         'contact-text': 'Pour collaboration et suggestions : nenormikchel@gmail.com',
+        'form-title': 'Nous Contacter',
+        'form-subtitle': 'Posez une question ou laissez une suggestion pour améliorer le guide',
+        'submit-btn-text': 'Envoyer le message',
+        'mail-btn-text': "Écrire à l'email",
+        'form-success': '✅ Message prêt! Votre client de messagerie va s\'ouvrir. Cliquez simplement sur "Envoyer".',
+        'form-error': '⚠️ Veuillez remplir tous les champs du formulaire.',
+        'email-subject': 'Question sur les réseaux neuronaux de ',
         'theme-text': 'Sombre',
         'lang-name': 'Français'
     },
@@ -1422,6 +1702,13 @@ const translations = {
         'legal-text': 'El contenido se proporciona solo con fines educativos. El autor no se hace responsable del uso de la información en violación de las reglas de los servicios de IA.',
         'contact-title': 'Contactos',
         'contact-text': 'Para colaboración y sugerencias: nenormikchel@gmail.com',
+        'form-title': 'Contáctenos',
+        'form-subtitle': 'Haga una pregunta o deje una sugerencia para mejorar la guía',
+        'submit-btn-text': 'Enviar mensaje',
+        'mail-btn-text': 'Escribir por correo',
+        'form-success': '✅ ¡Mensaje listo! Se abrirá su cliente de correo. Solo haga clic en "Enviar".',
+        'form-error': '⚠️ Por favor complete todos los campos del formulario.',
+        'email-subject': 'Pregunta sobre redes neuronales de ',
         'theme-text': 'Oscuro',
         'lang-name': 'Español (LATAM)'
     },
@@ -1461,6 +1748,13 @@ const translations = {
         'legal-text': 'Conținutul este furnizat doar în scopuri educaționale. Autorul nu este responsabil pentru utilizarea informațiilor încălcând regulile serviciilor AI.',
         'contact-title': 'Contacte',
         'contact-text': 'Pentru colaborare și sugestii: nenormikchel@gmail.com',
+        'form-title': 'Contactați-ne',
+        'form-subtitle': 'Puneți o întrebare sau lăsați o sugestie pentru îmbunătățirea ghidului',
+        'submit-btn-text': 'Trimite mesaj',
+        'mail-btn-text': 'Scrieți pe email',
+        'form-success': '✅ Mesaj gata! Clientul dvs. de email se va deschide. Doar faceți clic pe "Trimite".',
+        'form-error': '⚠️ Vă rugăm să completați toate câmpurile formularului.',
+        'email-subject': 'Întrebare despre rețele neuronale de la ',
         'theme-text': 'Întunecat',
         'lang-name': 'Română'
     },
@@ -1500,6 +1794,13 @@ const translations = {
         'legal-text': 'A tartalom kizárólag oktatási célokat szolgál. A szerző nem vállal felelősséget az információk AI szolgáltatási szabályok megsértésével történő felhasználásáért.',
         'contact-title': 'Kapcsolat',
         'contact-text': 'Együttműködésre és javaslatokra: nenormikchel@gmail.com',
+        'form-title': 'Kapcsolatfelvétel',
+        'form-subtitle': 'Tegyél fel egy kérdést vagy hagyj javaslatot az útmutató fejlesztéséhez',
+        'submit-btn-text': 'Üzenet küldése',
+        'mail-btn-text': 'Írás emailben',
+        'form-success': '✅ Üzenet kész! Megnyílik az email kliensed. Csak kattints a "Küldés" gombra.',
+        'form-error': '⚠️ Kérlek, töltsd ki az űrlap minden mezőjét.',
+        'email-subject': 'Kérdés a neurális hálózatokról, tőle: ',
         'theme-text': 'Sötét',
         'lang-name': 'Magyar'
     },
@@ -1539,6 +1840,13 @@ const translations = {
         'legal-text': 'Съдържанието се предоставя само за образователни цели. Авторът не носи отговорност за използването на информация в нарушение на правилата на AI услугите.',
         'contact-title': 'Контакти',
         'contact-text': 'За сътрудничество и предложения: nenormikchel@gmail.com',
+        'form-title': 'Свържете се с нас',
+        'form-subtitle': 'Задайте въпрос или оставете предложение за подобряване на ръководството',
+        'submit-btn-text': 'Изпрати съобщение',
+        'mail-btn-text': 'Пишете на имейл',
+        'form-success': '✅ Съобщението е готово! Ще се отвори вашия имейл клиент. Просто щракнете върху "Изпрати".',
+        'form-error': '⚠️ Моля, попълнете всички полета на формуляра.',
+        'email-subject': 'Въпрос относно невронните мрежи от ',
         'theme-text': 'Тъмна',
         'lang-name': 'Български'
     },
@@ -1578,6 +1886,13 @@ const translations = {
         'legal-text': 'Το περιεχόμενο παρέχεται μόνο για εκπαιδευτικούς σκοπούς. Ο συγγραφέας δεν φέρει ευθύνη για τη χρήση πληροφοριών σε παραβίαση κανόνων υπηρεσιών ΤΝ.',
         'contact-title': 'Επαφές',
         'contact-text': 'Για συνεργασία και προτάσεις: nenormikchel@gmail.com',
+        'form-title': 'Επικοινωνήστε μαζί μας',
+        'form-subtitle': 'Κάντε μια ερώτηση ή αφήστε μια πρόταση για βελτίωση του οδηγού',
+        'submit-btn-text': 'Αποστολή μηνύματος',
+        'mail-btn-text': 'Γράψτε στο email',
+        'form-success': '✅ Το μήνυμα είναι έτοιμο! Θα ανοίξει το email client σας. Απλώς κάντε κλικ στο "Αποστολή".',
+        'form-error': '⚠️ Παρακαλώ συμπληρώστε όλα τα πεδία της φόρμας.',
+        'email-subject': 'Ερώτηση για τα νευρωνικά δίκτυα από ',
         'theme-text': 'Σκούρο',
         'lang-name': 'Ελληνικά'
     },
@@ -1617,6 +1932,13 @@ const translations = {
         'legal-text': 'Content is provided for educational purposes only. The author is not responsible for the use of information in violation of AI service rules.',
         'contact-title': 'Contacts',
         'contact-text': 'For cooperation and suggestions: nenormikchel@gmail.com',
+        'form-title': 'Contact Us',
+        'form-subtitle': 'Ask a question or leave a suggestion to improve the guide',
+        'submit-btn-text': 'Send Message',
+        'mail-btn-text': 'Write to Email',
+        'form-success': '✅ Message ready! Your email client will open. Just click "Send".',
+        'form-error': '⚠️ Please fill in all form fields.',
+        'email-subject': 'Question about neural networks from ',
         'theme-text': 'Dark',
         'lang-name': 'English'
     },
@@ -1656,6 +1978,13 @@ const translations = {
         'legal-text': 'Inhalte werden nur zu Bildungszwecken bereitgestellt. Der Autor ist nicht verantwortlich für die Nutzung von Informationen, die gegen KI-Service-Regeln verstoßen.',
         'contact-title': 'Kontakte',
         'contact-text': 'Für Zusammenarbeit und Vorschläge: nenormikchel@gmail.com',
+        'form-title': 'Kontaktieren Sie uns',
+        'form-subtitle': 'Stellen Sie eine Frage oder hinterlassen Sie einen Verbesserungsvorschlag für die Anleitung',
+        'submit-btn-text': 'Nachricht senden',
+        'mail-btn-text': 'Per E-Mail schreiben',
+        'form-success': '✅ Nachricht fertig! Ihr E-Mail-Client wird geöffnet. Klicken Sie einfach auf "Senden".',
+        'form-error': '⚠️ Bitte füllen Sie alle Formularfelder aus.',
+        'email-subject': 'Frage zu neuronalen Netzen von ',
         'theme-text': 'Dunkel',
         'lang-name': 'Deutsch'
     },
@@ -1695,6 +2024,13 @@ const translations = {
         'legal-text': 'Treść jest udostępniana wyłącznie w celach edukacyjnych. Autor nie ponosi odpowiedzialności za wykorzystanie informacji w naruszeniu zasad usług AI.',
         'contact-title': 'Kontakty',
         'contact-text': 'Współpraca i sugestie: nenormikchel@gmail.com',
+        'form-title': 'Skontaktuj się z nami',
+        'form-subtitle': 'Zadaj pytanie lub zostaw sugestię ulepszenia przewodnika',
+        'submit-btn-text': 'Wyślij wiadomość',
+        'mail-btn-text': 'Napisz na email',
+        'form-success': '✅ Wiadomość gotowa! Otworzy się Twój klient poczty. Po prostu kliknij "Wyślij".',
+        'form-error': '⚠️ Proszę wypełnić wszystkie pola formularza.',
+        'email-subject': 'Pytanie o sieci neuronowe od ',
         'theme-text': 'Ciemny',
         'lang-name': 'Polski'
     },
@@ -1734,6 +2070,13 @@ const translations = {
         'legal-text': 'Inhoud wordt alleen voor educatieve doeleinden verstrekt. De auteur is niet verantwoordelijk voor het gebruik van informatie in strijd met AI-serviceregels.',
         'contact-title': 'Contacten',
         'contact-text': 'Voor samenwerking en suggesties: nenormikchel@gmail.com',
+        'form-title': 'Neem Contact op',
+        'form-subtitle': 'Stel een vraag of laat een suggestie achter om de handleiding te verbeteren',
+        'submit-btn-text': 'Bericht versturen',
+        'mail-btn-text': 'Schrijf naar email',
+        'form-success': '✅ Bericht klaar! Uw e-mailclient wordt geopend. Klik gewoon op "Versturen".',
+        'form-error': '⚠️ Vul alstublieft alle velden van het formulier in.',
+        'email-subject': 'Vraag over neurale netwerken van ',
         'theme-text': 'Donker',
         'lang-name': 'Nederlands'
     },
@@ -1773,6 +2116,13 @@ const translations = {
         'legal-text': 'सामग्री केवल शैक्षिक उद्देश्यों के लिए प्रदान की जाती है। लेखक एआई सेवा नियमों के उल्लंघन में जानकारी के उपयोग के लिए जिम्मेदार नहीं है।',
         'contact-title': 'संपर्क',
         'contact-text': 'सहयोग और सुझावों के लिए: nenormikchel@gmail.com',
+        'form-title': 'हमसे संपर्क करें',
+        'form-subtitle': 'प्रश्न पूछें या गाइड को बेहतर बनाने का सुझाव दें',
+        'submit-btn-text': 'संदेश भेजें',
+        'mail-btn-text': 'ईमेल पर लिखें',
+        'form-success': '✅ संदेश तैयार! आपका ईमेल क्लाइंट खुलेगा। बस "भेजें" पर क्लिक करें।',
+        'form-error': '⚠️ कृपया फॉर्म के सभी फ़ील्ड भरें।',
+        'email-subject': 'तंत्रिका नेटवर्क के बारे में प्रश्न, भेजने वाला: ',
         'theme-text': 'डार्क',
         'lang-name': 'हिन्दी'
     },
@@ -1812,6 +2162,13 @@ const translations = {
         'legal-text': 'Konten disediakan hanya untuk tujuan pendidikan. Penulis tidak bertanggung jawab atas penggunaan informasi yang melanggar aturan layanan AI.',
         'contact-title': 'Kontak',
         'contact-text': 'Untuk kerja sama dan saran: nenormikchel@gmail.com',
+        'form-title': 'Hubungi Kami',
+        'form-subtitle': 'Ajukan pertanyaan atau tinggalkan saran untuk meningkatkan panduan',
+        'submit-btn-text': 'Kirim Pesan',
+        'mail-btn-text': 'Tulis ke Email',
+        'form-success': '✅ Pesan siap! Klien email Anda akan terbuka. Cukup klik "Kirim".',
+        'form-error': '⚠️ Harap isi semua bidang formulir.',
+        'email-subject': 'Pertanyaan tentang jaringan saraf dari ',
         'theme-text': 'Gelap',
         'lang-name': 'Bahasa Indonesia'
     },
@@ -1851,6 +2208,13 @@ const translations = {
         'legal-text': 'เนื้อหาให้สำหรับวัตถุประสงค์การศึกษาเท่านั้น ผู้เขียนไม่รับผิดชอบต่อการใช้ข้อมูลที่ละเมิดกฎของบริการ AI',
         'contact-title': 'ติดต่อ',
         'contact-text': 'สำหรับความร่วมมือและข้อเสนอแนะ: nenormikchel@gmail.com',
+        'form-title': 'ติดต่อเรา',
+        'form-subtitle': 'ถามคำถามหรือแสดงความคิดเห็นเพื่อปรับปรุงคู่มือ',
+        'submit-btn-text': 'ส่งข้อความ',
+        'mail-btn-text': 'เขียนถึงอีเมล',
+        'form-success': '✅ ข้อความพร้อม! ไคลเอ็นต์อีเมลของคุณจะเปิด เพียงคลิก "ส่ง"',
+        'form-error': '⚠️ กรุณากรอกข้อมูลในแบบฟอร์มทั้งหมด',
+        'email-subject': 'คำถามเกี่ยวกับเครือข่ายประสาทจาก ',
         'theme-text': 'มืด',
         'lang-name': 'ไทย'
     },
@@ -1890,6 +2254,13 @@ const translations = {
         'legal-text': 'İçerik yalnızca eğitim amaçlı sağlanmaktadır. Yazar, AI hizmet kurallarını ihlal eden bilgilerin kullanımından sorumlu değildir.',
         'contact-title': 'İletişim',
         'contact-text': 'İşbirliği ve öneriler için: nenormikchel@gmail.com',
+        'form-title': 'Bize Ulaşın',
+        'form-subtitle': 'Bir soru sorun veya rehberi geliştirmek için öneri bırakın',
+        'submit-btn-text': 'Mesaj Gönder',
+        'mail-btn-text': "E-posta'ya Yaz",
+        'form-success': '✅ Mesaj hazır! E-posta istemciniz açılacak. Sadece "Gönder"e tıklayın.',
+        'form-error': '⚠️ Lütfen formun tüm alanlarını doldurun.',
+        'email-subject': 'Sinir ağları hakkında soru, gönderen: ',
         'theme-text': 'Koyu',
         'lang-name': 'Türkçe'
     },
@@ -1929,6 +2300,13 @@ const translations = {
         'legal-text': 'Kontent faqat ta\'lim maqsadlarida taqdim etiladi. Muallif AI xizmatlari qoidalarini buzishda ma\'lumotlardan foydalanish uchun javobgar emas.',
         'contact-title': 'Aloqa',
         'contact-text': 'Hamkorlik va takliflar uchun: nenormikchel@gmail.com',
+        'form-title': 'Biz bilan bog\'lanish',
+        'form-subtitle': 'Savol bering yoki qo\'llanmani yaxshilash uchun taklif qoldiring',
+        'submit-btn-text': 'Xabar yuborish',
+        'mail-btn-text': 'Emailga yozish',
+        'form-success': '✅ Xabar tayyor! Sizning email mijozi ochiladi. Faqat "Yuborish" tugmasini bosing.',
+        'form-error': '⚠️ Iltimos, shaklning barcha maydonlarini to\'ldiring.',
+        'email-subject': 'Neyron tarmoqlar haqida savol, yuboruvchi: ',
         'theme-text': 'Qorong\'i',
         'lang-name': 'Oʻzbekcha'
     },
@@ -1968,6 +2346,13 @@ const translations = {
         'legal-text': 'התוכן מסופק למטרות חינוכיות בלבד. המחבר אינו אחראי לשימוש במידע בהפרת כללי שירותי הבינה המלאכותית.',
         'contact-title': 'אנשי קשר',
         'contact-text': 'לשיתוף פעולה והצעות: nenormikchel@gmail.com',
+        'form-title': 'צור קשר',
+        'form-subtitle': 'שאל שאלה או השאר הצעה לשיפור המדריך',
+        'submit-btn-text': 'שלח הודעה',
+        'mail-btn-text': 'כתוב לאימייל',
+        'form-success': '✅ הודעה מוכנה! לקוח הדוא"ל שלך ייפתח. פשוט לחץ על "שלח".',
+        'form-error': '⚠️ אנא מלא את כל שדות הטופס.',
+        'email-subject': 'שאלה על רשתות עצביות מ- ',
         'theme-text': 'כהה',
         'lang-name': 'עברית'
     },
@@ -2007,6 +2392,13 @@ const translations = {
         'legal-text': 'Садржај се пружа само за образовне сврхе. Аутор није одговоран за коришћење информација у кршењу правила AI сервиса.',
         'contact-title': 'Контакти',
         'contact-text': 'За сарадњу и сугестије: nenormikchel@gmail.com',
+        'form-title': 'Контактирајте нас',
+        'form-subtitle': 'Поставите питање или оставите предлог за побољшање водича',
+        'submit-btn-text': 'Пошаљи поруку',
+        'mail-btn-text': 'Пиши на имејл',
+        'form-success': '✅ Порука спремна! Ваш имејл клијент ће се отворити. Само кликните на "Пошаљи".',
+        'form-error': '⚠️ Молимо попуните сва поља формулара.',
+        'email-subject': 'Питање о неуронским мрежама од ',
         'theme-text': 'Тамна',
         'lang-name': 'Српски'
     },
@@ -2046,6 +2438,13 @@ const translations = {
         'legal-text': 'ပါဝင်မှုကိုပညာရေးဆိုင်ရာအခြခံအားဖြင့်သာပေးအပ်သည်။ စာရေးသူသည် AI ဝန်ဆောင်မှုစည်းမျဉ်းများချိုးဖောက်ခြင်းတွင်အချက်အလက်များအသုံးပြုမှုအတွက်တာဝန်မရှိပါ။',
         'contact-title': 'ဆက်သွယ်ရန်',
         'contact-text': 'ပူးပေါင်းဆောင်ရွက်မှုနှင့်အကြံပြုချက်များအတွက်: nenormikchel@gmail.com',
+        'form-title': 'ဆက်သွယ်ရန်',
+        'form-subtitle': 'မေးခွန်းမေးမြန်းရန် သို့မဟုတ် လမ်းညွှန်ကို မြှင့်တင်ရန် အကြံပြုချက်ပေးရန်',
+        'submit-btn-text': 'မက်ဆေ့ပို့ရန်',
+        'mail-btn-text': 'အီးမေးလ်သို့ရေးရန်',
+        'form-success': '✅ မက်ဆေ့အဆင်သင့်ဖြစ်ပါပြီ။ သင့်အီးမေးလ်ကလိုင်းယင့်ဖွင့်လိမ့်မည်။ "ပို့ရန်" ကိုနှိပ်ပါ။',
+        'form-error': '⚠️ ကျေးဇူးပြု၍ ဖောင်တွင်နေရာအားလုံးဖြည့်ပါ။',
+        'email-subject': 'အာရုံကြောကွန်ရက်များအကြောင်း မေးခွန်း၊ ပေးပို့သူ: ',
         'theme-text': 'မှောင်သော',
         'lang-name': 'မြန်မာ'
     },
@@ -2085,6 +2484,13 @@ const translations = {
         'legal-text': 'বিষয়বস্তু শুধুমাত্র শিক্ষামূলক উদ্দেশ্যে সরবরাহ করা হয়। লেখক এআই পরিষেবার নিয়ম লঙ্ঘন করে তথ্য ব্যবহারের জন্য দায়ী নন।',
         'contact-title': 'যোগাযোগ',
         'contact-text': 'সহযোগিতা এবং পরামর্শের জন্য: nenormikchel@gmail.com',
+        'form-title': 'আমাদের সাথে যোগাযোগ করুন',
+        'form-subtitle': 'একটি প্রশ্ন জিজ্ঞাসা করুন বা গাইড উন্নত করার পরামর্শ দিন',
+        'submit-btn-text': 'বার্তা পাঠান',
+        'mail-btn-text': 'ইমেইলে লিখুন',
+        'form-success': '✅ বার্তা প্রস্তুত! আপনার ইমেইল ক্লায়েন্ট খুলবে। শুধু "পাঠান" ক্লিক করুন।',
+        'form-error': '⚠️ অনুগ্রহ করে ফর্মের সমস্ত ফিল্ড পূরণ করুন।',
+        'email-subject': 'নিউরাল নেটওয়ার্ক সম্পর্কে প্রশ্ন, প্রেরক: ',
         'theme-text': 'ডার্ক',
         'lang-name': 'বাংলা'
     },
@@ -2124,6 +2530,13 @@ const translations = {
         'legal-text': 'ʻOku ʻoatu e fakamatala ki he ngaahi meʻa akoʻanga pe. ʻOku ʻikai tali ʻe he tokotaha tohi e ngāueʻaki ʻo e fakamatala ʻi he hala ʻo e ngaahi lao ʻa e ngaahi sevesi AI.',
         'contact-title': 'Ngaahi Fehokotakiʻanga',
         'contact-text': 'Ki he fekauʻaki mo e ngaahi fakangatangata: nenormikchel@gmail.com',
+        'form-title': 'Fakafekau Aki a Maua',
+        'form-subtitle': 'Fakatū age e tau tala po ke tuku e tau manatu ke fakaeke e tau tohi taki',
+        'submit-btn-text': 'Tuku e Tau Fakamatalaga',
+        'mail-btn-text': 'Tohi ki he Meli',
+        'form-success': '✅ Kua mateuteu e tau fakamatalaga! Ka matala hoau imeli. Tūmau laka ki he "Tuku".',
+        'form-error': '⚠️ Fakamolemole, fakakatoa e tau vaha katoa he foomu.',
+        'email-subject': 'Tala ke he tau neke neula mai he ',
         'theme-text': 'ʻUliʻuli',
         'lang-name': 'Niuē'
     },
@@ -2163,6 +2576,13 @@ const translations = {
         'legal-text': 'Innehåll tillhandahålls endast i utbildningssyfte. Författaren ansvarar inte för användning av information i strid med AI-tjänsteregler.',
         'contact-title': 'Kontakter',
         'contact-text': 'För samarbete och förslag: nenormikchel@gmail.com',
+        'form-title': 'Kontakta Oss',
+        'form-subtitle': 'Ställ en fråga eller lämna ett förslag för att förbättra guiden',
+        'submit-btn-text': 'Skicka Meddelande',
+        'mail-btn-text': 'Skriva till E-post',
+        'form-success': '✅ Meddelande klart! Din e-postklient öppnas. Klicka bara på "Skicka".',
+        'form-error': '⚠️ Vänligen fyll i alla formulärfält.',
+        'email-subject': 'Fråga om neurala nätverk från ',
         'theme-text': 'Mörkt',
         'lang-name': 'Svenska'
     },
@@ -2202,6 +2622,13 @@ const translations = {
         'legal-text': 'Indhold leveres kun til uddannelsesformål. Forfatteren er ikke ansvarlig for brug af information i strid med AI-service regler.',
         'contact-title': 'Kontakter',
         'contact-text': 'For samarbejde og forslag: nenormikchel@gmail.com',
+        'form-title': 'Kontakt Os',
+        'form-subtitle': 'Stil et spørgsmål eller giv et forslag til at forbedre guiden',
+        'submit-btn-text': 'Send Besked',
+        'mail-btn-text': 'Skriv til Email',
+        'form-success': '✅ Besked klar! Din e-mail-klient vil åbne. Klik bare på "Send".',
+        'form-error': '⚠️ Udfyld venligst alle felter i formularen.',
+        'email-subject': 'Spørgsmål om neurale netværk fra ',
         'theme-text': 'Mørk',
         'lang-name': 'Dansk'
     },
@@ -2241,6 +2668,13 @@ const translations = {
         'legal-text': 'Innhold leveres kun for utdanningsformål. Forfatteren er ikke ansvarlig for bruk av informasjon i strid med AI-tjeneste regler.',
         'contact-title': 'Kontakter',
         'contact-text': 'For samarbeid og forslag: nenormikchel@gmail.com',
+        'form-title': 'Kontakt Oss',
+        'form-subtitle': 'Still et spørsmål eller legg igjen et forslag for å forbedre veiledningen',
+        'submit-btn-text': 'Send Melding',
+        'mail-btn-text': 'Skriv til E-post',
+        'form-success': '✅ Melding klar! E-postklienten din vil åpnes. Bare klikk på "Send".',
+        'form-error': '⚠️ Vennligst fyll ut alle feltene i skjemaet.',
+        'email-subject': 'Spørsmål om nevrale nettverk fra ',
         'theme-text': 'Mørk',
         'lang-name': 'Norsk'
     },
@@ -2280,6 +2714,13 @@ const translations = {
         'legal-text': 'Sisältö toimitetaan vain koulutustarkoituksiin. Kirjoittaja ei ole vastuussa tiedon käytöstä AI-palvelusääntöjen vastaisesti.',
         'contact-title': 'Yhteystiedot',
         'contact-text': 'Yhteistyöhön ja ehdotuksiin: nenormikchel@gmail.com',
+        'form-title': 'Ota Yhteyttä',
+        'form-subtitle': 'Kysy kysymys tai jätä ehdotus oppaan parantamiseksi',
+        'submit-btn-text': 'Lähetä Viesti',
+        'mail-btn-text': 'Kirjoita Sähköpostiin',
+        'form-success': '✅ Viesti valmis! Sähköpostiohjelmasi avautuu. Napsauta vain "Lähetä".',
+        'form-error': '⚠️ Täytä kaikki lomakkeen kentät.',
+        'email-subject': 'Kysymys hermo-verkoista lähettäjältä ',
         'theme-text': 'Tumma',
         'lang-name': 'Suomi'
     },
@@ -2319,6 +2760,13 @@ const translations = {
         'legal-text': 'Բովանդակությունը տրամադրվում է միայն կրթական նպատակներով: Հեղինակը պատասխանատվություն չի կրում տեղեկատվության օգտագործման համար, որը խախտում է AI ծառայությունների կանոնները:',
         'contact-title': 'Կոնտակտներ',
         'contact-text': 'Համագործակցության և առաջարկների համար. nenormikchel@gmail.com',
+        'form-title': 'Կապ Մեզ Հետ',
+        'form-subtitle': 'Հարց տվեք կամ թողեք առաջարկ ուղեցույցը բարելավելու համար',
+        'submit-btn-text': 'Ուղարկել Հաղորդագրություն',
+        'mail-btn-text': 'Գրել Էլ․ փոստին',
+        'form-success': '✅ Հաղորդագրությունը պատրաստ է! Ձեր էլ․ փոստի հաճախորդը կբացվի: Պարզապես կտտացրեք «Ուղարկել»:',
+        'form-error': '⚠️ Խնդրում ենք լրացնել բոլոր դաշտերը:',
+        'email-subject': 'Հարց նեյրոնային ցանցերի մասին, ումից՝ ',
         'theme-text': 'Մուգ',
         'lang-name': 'Հայերեն'
     },
@@ -2358,6 +2806,13 @@ const translations = {
         'legal-text': 'კონტენტი განკუთვნილია მხოლოდ საგანმანათლებლო მიზნებისთვის. ავტორი არ არის პასუხისმგებელი ინფორმაციის გამოყენებაზე, რომელიც ეწინააღმდეგება AI სერვისების წესებს.',
         'contact-title': 'კონტაქტები',
         'contact-text': 'თანამშრომლობისა და წინადადებებისთვის: nenormikchel@gmail.com',
+        'form-title': 'დაგვიკავშირდით',
+        'form-subtitle': 'დასვით კითხვა ან დატოვეთ შემოთავაზება გზამკვლევის გასაუმჯობესებლად',
+        'submit-btn-text': 'შეტყობინების გაგზავნა',
+        'mail-btn-text': 'დაწერეთ ელ. ფოსტაზე',
+        'form-success': '✅ შეტყობინება მზად არის! თქვენი ელ. ფოსტის კლიენტი გაიხსნება. უბრალოდ დააწკაპუნეთ "გაგზავნა".',
+        'form-error': '⚠️ გთხოვთ, შეავსოთ ფორმის ყველა ველი.',
+        'email-subject': 'კითხვა ნევრონული ქსელების შესახებ, გამომგზავნი: ',
         'theme-text': 'მუქი',
         'lang-name': 'ქართული'
     }
