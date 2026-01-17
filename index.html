@@ -3244,7 +3244,6 @@ document.getElementById('static-contact-form').addEventListener('submit', handle
                 <path d="M10 4C4.58 4 0 7.58 0 12C0 16.42 4.58 20 10 20C15.42 20 20 16.42 20 12C20 7.58 15.42 4 10 4ZM10 18C5.69 18 2 15.31 2 12C2 8.69 5.69 6 10 6C14.31 6 18 8.69 18 12C18 15.31 14.31 18 10 18Z" fill="currentColor"/>
                 <path d="M10 8C8.34 8 7 9.34 7 11C7 12.66 8.34 14 10 14C11.66 14 13 12.66 13 11C13 9.34 11.66 8 10 8Z" fill="currentColor"/>
             </svg>
-            <span id="accessibility-text"></span>
         `;
     
         // Вставляем кнопку в controls
@@ -3282,10 +3281,6 @@ document.getElementById('static-contact-form').addEventListener('submit', handle
             el.style.transition = 'none !important';
         });
         
-        // Обновляем текст кнопки
-        const textEl = document.getElementById('accessibility-text');
-        if (textEl) textEl.textContent = '';
-        
         // Применяем высокую контрастность
         document.documentElement.style.setProperty('--bg-color', '#000000');
         document.documentElement.style.setProperty('--text-color', '#FFFFFF');
@@ -3306,10 +3301,6 @@ document.getElementById('static-contact-form').addEventListener('submit', handle
             el.style.animation = '';
             el.style.transition = '';
         });
-        
-        // Обновляем текст кнопки
-        const textEl = document.getElementById('accessibility-text');
-        if (textEl) textEl.textContent = 'Доступность';
         
         // Восстанавливаем переменные темы
         const isDark = document.body.classList.contains('dark-theme');
