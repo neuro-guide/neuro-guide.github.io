@@ -3075,7 +3075,6 @@ const translations = {
             for (const langCode in languages) {
                 const lang = languages[langCode];
                 const langItem = document.createElement('a');
-                langItem.href = '#';
                 langItem.className = 'dropdown-item';
                 langItem.dataset.lang = langCode;
                 langItem.textContent = `${lang.name} (${lang.native})`;
