@@ -3179,6 +3179,7 @@ const translations = {
             
             startBtn.addEventListener('click', function() {
                 const span = startBtn.querySelector('span');
+                const lang = document.documentElement.getAttribute('lang') || 'ru-RU';
                 span.textContent = lang === 'en-US' ? 'Loading...' : 'Загрузка...';
                 startBtn.disabled = true;
                 
@@ -3347,93 +3348,6 @@ const translations = {
                 });
             }, 100);
         });
-
-const TELEGRAM_BOT_TOKEN = '8550376421:AAF6xirvQitTk0E_NifqhwU4IQsb-dDerLY';
-const TELEGRAM_CHAT_ID = 8550376421;
-
-async function sendTelegramNotification(formData) {
-    try {
-        const message = formatTelegramMessage(formData);
-        
-        const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                chat_id: TELEGRAM_CHAT_ID,
-                text: message,
-                parse_mode: 'HTML'
-            })
-        });
-        
-        const data = await response.json();
-        return data.ok;
-    } catch (error) {
-        console.error('Ошибка отправки в Telegram:', error);
-        return false;
-    }
-}
-
-function formatTelegramMessage(data) {
-    const typeMap = {
-        'question': '❓ Вопрос по нейросетям',
-        'suggestion': '💡 Предложение по улучшению',
-        'cooperation': '🤝 Сотрудничество',
-        'other': '📝 Другое'
-    };
-    
-    const typeEmoji = {
-        'question': '❓',
-        'suggestion': '💡',
-        'cooperation': '🤝',
-        'other': '📝'
-    };
-    
-    return `<b>${typeEmoji[data.type]} НОВОЕ СООБЩЕНИЕ С САЙТА</b>
-
-<b>👤 Имя:</b> ${data.name}
-<b>📧 Email:</b> ${data.email}
-<b>📋 Тип:</b> ${typeMap[data.type]}
-
-<b>📄 Сообщение:</b>
-${data.message}
-
-<b>⏰ Время:</b> ${new Date().toLocaleString('ru-RU')}
-<b>🌐 Язык:</b> ${document.getElementById('main-html').getAttribute('lang')}
-
-#сообщение #обратная_связь`;
-}
-
-async function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('user-name').value.trim();
-    const email = document.getElementById('user-email').value.trim();
-    const type = document.getElementById('message-type').value;
-    const message = document.getElementById('user-message').value.trim();
-
-    if (!name || !email || !message) {
-        showFormMessage('form-error', 'error');
-        return;
-    }
-    
-    const formData = { name, email, type, message };
-
-    const telegramSent = await sendTelegramNotification(formData);
-
-    openEmailClient(formData);
-
-    if (telegramSent) {
-        showFormMessage('✅ Сообщение отправлено в Telegram и подготовлено для email!', 'success');
-    } else {
-        showFormMessage('⚠️ Сообщение подготовлено для email, но не отправлено в Telegram', 'warning');
-    }
-
-    document.getElementById('static-contact-form').reset();
-}
-
-document.getElementById('static-contact-form').addEventListener('submit', handleFormSubmit);
     
     function initAccessibilityMode() {
         const accessibilityBtn = document.createElement('button');
