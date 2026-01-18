@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /404.html
+Disallow: /404
+
+# Основной хост (опционально, но хорошо для GitHub Pages)
+Host: https://neuro-guide.github.io
+
+# Sitemap (укажи полный путь)
+Sitemap: https://neuro-guide.github.io/sitemap.xml
