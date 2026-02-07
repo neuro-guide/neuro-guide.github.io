@@ -3473,5 +3473,14 @@ const translations = {
         initAccessibilityMode();
     });
     </script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('Всё чётко, SW в деле!', reg))
+        .catch(err => console.log('Косяк при регистрации SW:', err));
+    });
+  }
+    </script>
 </body>
 </html>
