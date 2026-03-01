@@ -1,4 +1,4 @@
-const CACHE_NAME = 'neuro-guide-v1'; // не забывай увеличивать версию при обновлении сайта!
+const CACHE_NAME = 'neuro-guide-v2'; // не забывай увеличивать версию при обновлении сайта!
 const ASSETS = [
   '/',
   '/index.html',
