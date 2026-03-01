@@ -2,8 +2,11 @@ const CACHE_NAME = 'neuro-guide-v1'; // не забывай увеличиват
 const ASSETS = [
   '/',
   '/index.html',
+  '/404.html',
   '/manifest.json',
-  // если есть другие статические файлы (CSS, JS, картинки) — добавь их сюда же
+  '/robots.txt',
+  '/sitemap.xml',
+  '/googlee5d8d673778c47e8.html'
 ];
 
 // Установка: кэшируем базовые файлы и сразу активируем нового воркера
